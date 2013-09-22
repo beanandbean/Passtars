@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FCC1594917EEBDE800685498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594817EEBDE800685498 /* Foundation.framework */; };
+		FCC1594B17EEBDE800685498 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594A17EEBDE800685498 /* CoreGraphics.framework */; };
+		FCC1594D17EEBDE800685498 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594C17EEBDE800685498 /* UIKit.framework */; };
+		FCC1595317EEBDE800685498 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCC1595117EEBDE800685498 /* InfoPlist.strings */; };
+		FCC1595517EEBDE800685498 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1595417EEBDE800685498 /* main.m */; };
+		FCC1595917EEBDE800685498 /* CPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1595817EEBDE800685498 /* CPAppDelegate.m */; };
+		FCC1595C17EEBDE800685498 /* Passtars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC1595A17EEBDE800685498 /* Passtars.storyboard */; };
+		FCC1596417EEBDE800685498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCC1596317EEBDE800685498 /* Images.xcassets */; };
+		FCC1596B17EEBDE800685498 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1596A17EEBDE800685498 /* XCTest.framework */; };
+		FCC1596C17EEBDE800685498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594817EEBDE800685498 /* Foundation.framework */; };
+		FCC1596D17EEBDE800685498 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594C17EEBDE800685498 /* UIKit.framework */; };
+		FCC1597517EEBDE800685498 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCC1597317EEBDE800685498 /* InfoPlist.strings */; };
+		FCC1597717EEBDE800685498 /* PasstarsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1597617EEBDE800685498 /* PasstarsTests.m */; };
+		FCC1598517EEC01B00685498 /* CPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1598417EEC01B00685498 /* CPMainViewController.m */; };
+		FCC1599017EED8FF00685498 /* CPAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1598F17EED8FF00685498 /* CPAppearanceManager.m */; };
+		FCC159A517EEE42400685498 /* CPApplicationProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1599317EEE42400685498 /* CPApplicationProcess.m */; };
+		FCC159A617EEE42400685498 /* CPIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1599517EEE42400685498 /* CPIAPHelper.m */; };
+		FCC159A817EEE42400685498 /* CPPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1599917EEE42400685498 /* CPPassword.m */; };
+		FCC159A917EEE42400685498 /* CPProcessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1599C17EEE42400685498 /* CPProcessManager.m */; };
+		FCC159AA17EEE42400685498 /* CPUserDefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC1599E17EEE42400685498 /* CPUserDefaultManager.m */; };
+		FCC159AB17EEE42400685498 /* CPViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC159A017EEE42400685498 /* CPViewManager.m */; };
+		FCC159AC17EEE42400685498 /* Passtars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCC159A117EEE42400685498 /* Passtars.xcdatamodeld */; };
+		FCC159AD17EEE42400685498 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC159A417EEE42400685498 /* Reachability.m */; };
+		FCC159B217EEE44500685498 /* CPMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC159AF17EEE44500685498 /* CPMemo.m */; };
+		FCC159B317EEE44500685498 /* CPPassDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC159B117EEE44500685498 /* CPPassDataManager.m */; };
+		FCC159B517EEE4B700685498 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B417EEE4B700685498 /* StoreKit.framework */; };
+		FCC159B717EEE4BE00685498 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B617EEE4BE00685498 /* iAd.framework */; };
+		FCC159B917EEE4C600685498 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B817EEE4C600685498 /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCC1596E17EEBDE800685498 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCC1593D17EEBDE800685498 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCC1594417EEBDE800685498;
+			remoteInfo = Passtars;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FCC1594517EEBDE800685498 /* Passtars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtars.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC1594817EEBDE800685498 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FCC1594A17EEBDE800685498 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FCC1594C17EEBDE800685498 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FCC1595017EEBDE800685498 /* Passtars-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Passtars-Info.plist"; sourceTree = "<group>"; };
+		FCC1595217EEBDE800685498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FCC1595417EEBDE800685498 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FCC1595617EEBDE800685498 /* Passtars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Passtars-Prefix.pch"; sourceTree = "<group>"; };
+		FCC1595717EEBDE800685498 /* CPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppDelegate.h; sourceTree = "<group>"; };
+		FCC1595817EEBDE800685498 /* CPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppDelegate.m; sourceTree = "<group>"; };
+		FCC1595B17EEBDE800685498 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Passtars.storyboard; sourceTree = "<group>"; };
+		FCC1596317EEBDE800685498 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCC1596917EEBDE800685498 /* PasstarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasstarsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC1596A17EEBDE800685498 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FCC1597217EEBDE800685498 /* PasstarsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PasstarsTests-Info.plist"; sourceTree = "<group>"; };
+		FCC1597417EEBDE800685498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FCC1597617EEBDE800685498 /* PasstarsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasstarsTests.m; sourceTree = "<group>"; };
+		FCC1598017EEBE6D00685498 /* Passtars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Passtars.entitlements; sourceTree = "<group>"; };
+		FCC1598317EEC01B00685498 /* CPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMainViewController.h; sourceTree = "<group>"; };
+		FCC1598417EEC01B00685498 /* CPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMainViewController.m; sourceTree = "<group>"; };
+		FCC1598E17EED8FF00685498 /* CPAppearanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAppearanceManager.h; sourceTree = "<group>"; };
+		FCC1598F17EED8FF00685498 /* CPAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAppearanceManager.m; sourceTree = "<group>"; };
+		FCC1599117EEDA7600685498 /* CPHelperMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPHelperMacros.h; sourceTree = "<group>"; };
+		FCC1599217EEE42400685498 /* CPApplicationProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPApplicationProcess.h; sourceTree = "<group>"; };
+		FCC1599317EEE42400685498 /* CPApplicationProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPApplicationProcess.m; sourceTree = "<group>"; };
+		FCC1599417EEE42400685498 /* CPIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPIAPHelper.h; sourceTree = "<group>"; };
+		FCC1599517EEE42400685498 /* CPIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPIAPHelper.m; sourceTree = "<group>"; };
+		FCC1599817EEE42400685498 /* CPPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPassword.h; sourceTree = "<group>"; };
+		FCC1599917EEE42400685498 /* CPPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPassword.m; sourceTree = "<group>"; };
+		FCC1599A17EEE42400685498 /* CPProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPProcess.h; sourceTree = "<group>"; };
+		FCC1599B17EEE42400685498 /* CPProcessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPProcessManager.h; sourceTree = "<group>"; };
+		FCC1599C17EEE42400685498 /* CPProcessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPProcessManager.m; sourceTree = "<group>"; };
+		FCC1599D17EEE42400685498 /* CPUserDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUserDefaultManager.h; sourceTree = "<group>"; };
+		FCC1599E17EEE42400685498 /* CPUserDefaultManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPUserDefaultManager.m; sourceTree = "<group>"; };
+		FCC1599F17EEE42400685498 /* CPViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPViewManager.h; sourceTree = "<group>"; };
+		FCC159A017EEE42400685498 /* CPViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPViewManager.m; sourceTree = "<group>"; };
+		FCC159A217EEE42400685498 /* Passtars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Passtars.xcdatamodel; sourceTree = "<group>"; };
+		FCC159A317EEE42400685498 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FCC159A417EEE42400685498 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FCC159AE17EEE44500685498 /* CPMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMemo.h; sourceTree = "<group>"; };
+		FCC159AF17EEE44500685498 /* CPMemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMemo.m; sourceTree = "<group>"; };
+		FCC159B017EEE44500685498 /* CPPassDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPassDataManager.h; sourceTree = "<group>"; };
+		FCC159B117EEE44500685498 /* CPPassDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPassDataManager.m; sourceTree = "<group>"; };
+		FCC159B417EEE4B700685498 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FCC159B617EEE4BE00685498 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		FCC159B817EEE4C600685498 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCC1594217EEBDE800685498 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC159B917EEE4C600685498 /* CoreData.framework in Frameworks */,
+				FCC159B717EEE4BE00685498 /* iAd.framework in Frameworks */,
+				FCC159B517EEE4B700685498 /* StoreKit.framework in Frameworks */,
+				FCC1594B17EEBDE800685498 /* CoreGraphics.framework in Frameworks */,
+				FCC1594D17EEBDE800685498 /* UIKit.framework in Frameworks */,
+				FCC1594917EEBDE800685498 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC1596617EEBDE800685498 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC1596B17EEBDE800685498 /* XCTest.framework in Frameworks */,
+				FCC1596D17EEBDE800685498 /* UIKit.framework in Frameworks */,
+				FCC1596C17EEBDE800685498 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FCC1593C17EEBDE800685498 = {
+			isa = PBXGroup;
+			children = (
+				FCC1594E17EEBDE800685498 /* Passtars */,
+				FCC1597017EEBDE800685498 /* PasstarsTests */,
+				FCC1594717EEBDE800685498 /* Frameworks */,
+				FCC1594617EEBDE800685498 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FCC1594617EEBDE800685498 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1594517EEBDE800685498 /* Passtars.app */,
+				FCC1596917EEBDE800685498 /* PasstarsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCC1594717EEBDE800685498 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCC159B817EEE4C600685498 /* CoreData.framework */,
+				FCC159B617EEE4BE00685498 /* iAd.framework */,
+				FCC159B417EEE4B700685498 /* StoreKit.framework */,
+				FCC1594817EEBDE800685498 /* Foundation.framework */,
+				FCC1594A17EEBDE800685498 /* CoreGraphics.framework */,
+				FCC1594C17EEBDE800685498 /* UIKit.framework */,
+				FCC1596A17EEBDE800685498 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCC1594E17EEBDE800685498 /* Passtars */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1595717EEBDE800685498 /* CPAppDelegate.h */,
+				FCC1595817EEBDE800685498 /* CPAppDelegate.m */,
+				FCC1598E17EED8FF00685498 /* CPAppearanceManager.h */,
+				FCC1598F17EED8FF00685498 /* CPAppearanceManager.m */,
+				FCC1599217EEE42400685498 /* CPApplicationProcess.h */,
+				FCC1599317EEE42400685498 /* CPApplicationProcess.m */,
+				FCC1599117EEDA7600685498 /* CPHelperMacros.h */,
+				FCC1599417EEE42400685498 /* CPIAPHelper.h */,
+				FCC1599517EEE42400685498 /* CPIAPHelper.m */,
+				FCC1598317EEC01B00685498 /* CPMainViewController.h */,
+				FCC1598417EEC01B00685498 /* CPMainViewController.m */,
+				FCC159AE17EEE44500685498 /* CPMemo.h */,
+				FCC159AF17EEE44500685498 /* CPMemo.m */,
+				FCC159B017EEE44500685498 /* CPPassDataManager.h */,
+				FCC159B117EEE44500685498 /* CPPassDataManager.m */,
+				FCC1599817EEE42400685498 /* CPPassword.h */,
+				FCC1599917EEE42400685498 /* CPPassword.m */,
+				FCC1599A17EEE42400685498 /* CPProcess.h */,
+				FCC1599B17EEE42400685498 /* CPProcessManager.h */,
+				FCC1599C17EEE42400685498 /* CPProcessManager.m */,
+				FCC1599D17EEE42400685498 /* CPUserDefaultManager.h */,
+				FCC1599E17EEE42400685498 /* CPUserDefaultManager.m */,
+				FCC1599F17EEE42400685498 /* CPViewManager.h */,
+				FCC159A017EEE42400685498 /* CPViewManager.m */,
+				FCC1596317EEBDE800685498 /* Images.xcassets */,
+				FCC1598017EEBE6D00685498 /* Passtars.entitlements */,
+				FCC1595A17EEBDE800685498 /* Passtars.storyboard */,
+				FCC159A117EEE42400685498 /* Passtars.xcdatamodeld */,
+				FCC159A317EEE42400685498 /* Reachability.h */,
+				FCC159A417EEE42400685498 /* Reachability.m */,
+				FCC1594F17EEBDE800685498 /* Supporting Files */,
+			);
+			path = Passtars;
+			sourceTree = "<group>";
+		};
+		FCC1594F17EEBDE800685498 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1595017EEBDE800685498 /* Passtars-Info.plist */,
+				FCC1595117EEBDE800685498 /* InfoPlist.strings */,
+				FCC1595417EEBDE800685498 /* main.m */,
+				FCC1595617EEBDE800685498 /* Passtars-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCC1597017EEBDE800685498 /* PasstarsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1597617EEBDE800685498 /* PasstarsTests.m */,
+				FCC1597117EEBDE800685498 /* Supporting Files */,
+			);
+			path = PasstarsTests;
+			sourceTree = "<group>";
+		};
+		FCC1597117EEBDE800685498 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCC1597217EEBDE800685498 /* PasstarsTests-Info.plist */,
+				FCC1597317EEBDE800685498 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCC1594417EEBDE800685498 /* Passtars */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC1597A17EEBDE800685498 /* Build configuration list for PBXNativeTarget "Passtars" */;
+			buildPhases = (
+				FCC1594117EEBDE800685498 /* Sources */,
+				FCC1594217EEBDE800685498 /* Frameworks */,
+				FCC1594317EEBDE800685498 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Passtars;
+			productName = Passtars;
+			productReference = FCC1594517EEBDE800685498 /* Passtars.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCC1596817EEBDE800685498 /* PasstarsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC1597D17EEBDE800685498 /* Build configuration list for PBXNativeTarget "PasstarsTests" */;
+			buildPhases = (
+				FCC1596517EEBDE800685498 /* Sources */,
+				FCC1596617EEBDE800685498 /* Frameworks */,
+				FCC1596717EEBDE800685498 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCC1596F17EEBDE800685498 /* PBXTargetDependency */,
+			);
+			name = PasstarsTests;
+			productName = PasstarsTests;
+			productReference = FCC1596917EEBDE800685498 /* PasstarsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCC1593D17EEBDE800685498 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CP;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = codingpotato;
+				TargetAttributes = {
+					FCC1594417EEBDE800685498 = {
+						DevelopmentTeam = FY635R7KCK;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+					FCC1596817EEBDE800685498 = {
+						TestTargetID = FCC1594417EEBDE800685498;
+					};
+				};
+			};
+			buildConfigurationList = FCC1594017EEBDE800685498 /* Build configuration list for PBXProject "Passtars" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCC1593C17EEBDE800685498;
+			productRefGroup = FCC1594617EEBDE800685498 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCC1594417EEBDE800685498 /* Passtars */,
+				FCC1596817EEBDE800685498 /* PasstarsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCC1594317EEBDE800685498 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC1596417EEBDE800685498 /* Images.xcassets in Resources */,
+				FCC1595C17EEBDE800685498 /* Passtars.storyboard in Resources */,
+				FCC1595317EEBDE800685498 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC1596717EEBDE800685498 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC1597517EEBDE800685498 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCC1594117EEBDE800685498 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC159AD17EEE42400685498 /* Reachability.m in Sources */,
+				FCC1598517EEC01B00685498 /* CPMainViewController.m in Sources */,
+				FCC159B317EEE44500685498 /* CPPassDataManager.m in Sources */,
+				FCC159B217EEE44500685498 /* CPMemo.m in Sources */,
+				FCC159AC17EEE42400685498 /* Passtars.xcdatamodeld in Sources */,
+				FCC1595517EEBDE800685498 /* main.m in Sources */,
+				FCC1599017EED8FF00685498 /* CPAppearanceManager.m in Sources */,
+				FCC159AA17EEE42400685498 /* CPUserDefaultManager.m in Sources */,
+				FCC159AB17EEE42400685498 /* CPViewManager.m in Sources */,
+				FCC1595917EEBDE800685498 /* CPAppDelegate.m in Sources */,
+				FCC159A817EEE42400685498 /* CPPassword.m in Sources */,
+				FCC159A917EEE42400685498 /* CPProcessManager.m in Sources */,
+				FCC159A517EEE42400685498 /* CPApplicationProcess.m in Sources */,
+				FCC159A617EEE42400685498 /* CPIAPHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC1596517EEBDE800685498 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC1597717EEBDE800685498 /* PasstarsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCC1596F17EEBDE800685498 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCC1594417EEBDE800685498 /* Passtars */;
+			targetProxy = FCC1596E17EEBDE800685498 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FCC1595117EEBDE800685498 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCC1595217EEBDE800685498 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FCC1595A17EEBDE800685498 /* Passtars.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCC1595B17EEBDE800685498 /* Base */,
+			);
+			name = Passtars.storyboard;
+			sourceTree = "<group>";
+		};
+		FCC1597317EEBDE800685498 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCC1597417EEBDE800685498 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FCC1597817EEBDE800685498 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FCC1597917EEBDE800685498 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCC1597B17EEBDE800685498 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
+				INFOPLIST_FILE = "Passtars/Passtars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FCC1597C17EEBDE800685498 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
+				INFOPLIST_FILE = "Passtars/Passtars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FCC1597E17EEBDE800685498 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passtars.app/Passtars";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PasstarsTests/PasstarsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FCC1597F17EEBDE800685498 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Passtars.app/Passtars";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
+				INFOPLIST_FILE = "PasstarsTests/PasstarsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCC1594017EEBDE800685498 /* Build configuration list for PBXProject "Passtars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC1597817EEBDE800685498 /* Debug */,
+				FCC1597917EEBDE800685498 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC1597A17EEBDE800685498 /* Build configuration list for PBXNativeTarget "Passtars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC1597B17EEBDE800685498 /* Debug */,
+				FCC1597C17EEBDE800685498 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC1597D17EEBDE800685498 /* Build configuration list for PBXNativeTarget "PasstarsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC1597E17EEBDE800685498 /* Debug */,
+				FCC1597F17EEBDE800685498 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FCC159A117EEE42400685498 /* Passtars.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FCC159A217EEE42400685498 /* Passtars.xcdatamodel */,
+			);
+			currentVersion = FCC159A217EEE42400685498 /* Passtars.xcdatamodel */;
+			path = Passtars.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FCC1593D17EEBDE800685498 /* Project object */;
+}
