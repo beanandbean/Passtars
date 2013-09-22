@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-#ifndef _HELPER_MACROS
-#define _HELPER_MACROS
+#ifndef _HELPER_MACROS_
+#define _HELPER_MACROS_
 
 #define CSTR_TO_OBJC(str) /* Using ASCII for string encoding */ \
     [NSString stringWithCString:str encoding:NSASCIIStringEncoding]

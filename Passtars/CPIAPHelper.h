@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-#import "StoreKit/StoreKit.h"
+#import <StoreKit/StoreKit.h>
 
 extern const NSString * const CPProductNameRemoveAd;
 

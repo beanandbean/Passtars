@@ -8,14 +8,6 @@
 
 static const NSLayoutAttribute ATTR_END = -1;
 
-typedef enum {
-    CPStandardMarginEdgeLeft,
-    CPStandardMarginEdgeRight,
-    CPStandardCoverImageCenterX,
-    CPStandardCoverImageCenterY,
-    CPStandardPositionCount
-} CPStandardPosition;
-
 @interface CPAppearanceManager : NSObject
 
 + (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations;
@@ -34,11 +26,5 @@ typedef enum {
 
 + (NSLayoutConstraint *)constraintWithView:(UIView *)view width:(CGFloat)width;
 + (NSLayoutConstraint *)constraintWithView:(UIView *)view height:(CGFloat)height;
-
-#pragma mark - Standard Constraints Helper
-
-+ (void)registerStandardForPosition:(CPStandardPosition)edge asItem:(UIView *)view attribute:(NSLayoutAttribute)attr multiplier:(CGFloat)multiplier constant:(CGFloat)c;
-
-+ (NSLayoutConstraint *)constraintWithView:(UIView *)view attribute:(NSLayoutAttribute)attr relatedBy:(NSLayoutRelation)relation constant:(CGFloat)c toPosition:(CPStandardPosition)edge;
 
 @end

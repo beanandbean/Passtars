@@ -9,6 +9,7 @@
 #import "CPPassDataManager.h"
 
 #import "CPHelperMacros.h"
+#import "CPPasstarsConfig.h"
 
 #import "CPMemo.h"
 #import "CPPassword.h"
@@ -38,15 +39,9 @@ static CPPassDataManager *defaultManager = nil;
         defaultManager = [[CPPassDataManager alloc] init];
         
 #ifdef AUTO_ADD_NEW_MEMOS
-        [defaultManager addMemoText:@"Hello" intoIndex:0];
-        [defaultManager addMemoText:@"Hello" intoIndex:1];
-        [defaultManager addMemoText:@"Hello" intoIndex:2];
-        [defaultManager addMemoText:@"Hello" intoIndex:3];
-        [defaultManager addMemoText:@"Hello" intoIndex:4];
-        [defaultManager addMemoText:@"Hello" intoIndex:5];
-        [defaultManager addMemoText:@"Hello" intoIndex:6];
-        [defaultManager addMemoText:@"Hello" intoIndex:7];
-        [defaultManager addMemoText:@"Hello" intoIndex:8];
+        for (NSUInteger index = 0; index < MAX_PASSWORD_COUNT; index++) {
+            [defaultManager newMemoText:@"Hello" inIndex:index];
+        }
 #endif
         
     }
@@ -62,7 +57,7 @@ static CPPassDataManager *defaultManager = nil;
         [_passwordsController performFetch:nil];
         
         if (!_passwordsController.fetchedObjects.count) {
-            for (NSUInteger index = 0; index < 9; index++) {
+            for (NSUInteger index = 0; index < MAX_PASSWORD_COUNT; index++) {
                 CPPassword *password = [NSEntityDescription insertNewObjectForEntityForName:@"Password" inManagedObjectContext:self.managedObjectContext];
                 password.index = [NSNumber numberWithUnsignedInteger:index];
                 password.isUsed = [NSNumber numberWithBool:NO];
