@@ -32,7 +32,7 @@
     [self.superview addSubview:self.adView];
     [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.adView alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:self.appContentView attribute:NSLayoutAttributeBottom alignToView:self.adView attribute:NSLayoutAttributeTop]];
-
+    
     [self.appContentManager loadAnimated:NO];
     [self.adManager loadAnimated:NO];
 }

@@ -15,16 +15,6 @@
 
 static const int MAX_PASSWORD_COUNT = 7;
 
-static const float DEFAULT_PASSWORD_COLORS[] = {
-    1.000, 0.000, 0.000,
-    1.000, 0.647, 0.000,
-    1.000, 1.000, 0.000,
-    0.000, 0.502, 0.000,
-    0.000, 0.000, 1.000,
-    0.294, 0.510, 0.000,
-    0.502, 0.000, 0.502,
-};
-
 #define PASSWORD_DEVICE_RELATED_INDEX (DEVICE_RELATED_OBJ(0, 1) + ORIENTATION_RELATED_OBJ(1, 0))
     // This was defined to get index for the following array according to current devide and orientation
 
@@ -39,15 +29,29 @@ static const float _PASSWORD_RADIUS[] = {
 static const float PASSWORD_HORIZON_DISTANCE_MULTIPLIER = 1.732; // = sqrt(3)
     // distance between left and center passwords: multiplier * radius
 
-#define C(obj) obj                                   // CONSTANT
-#define D(phone, pad) DEVICE_RELATED_OBJ(phone, pad) // DEVICE RELATED
+static const float PASSWORD_SIZE_MULTIPLIER = 0.95;
 
-#define HELP_BUTTON_VIEW_HEIGHT                        D(60.0, 60.0)
-#define HELP_PAGE_CONTROL_HEIGHT                       D(44.0, 44.0)
-#define HELP_PAGE_DELAY_TIME                           C(3.0)
-#define HELP_START_BUTTON_HEIGHT                       D(44.0, 44.0)
-#define HELP_START_BUTTON_WIDTH                        D(200.0, 200.0)
-#define HELP_TEXT_HEIGHT                               D(60.0, 60.0)
-#define HELP_TITLE_HEIGHT                              D(50.0, 50.0)
+static const float PASSWORD_GRADIENT_EXPONENT = 1.75;
+
+static const float DEFAULT_PASSWORD_COLORS[] = {
+    1.000, 0.000, 0.000,
+    1.000, 0.647, 0.000,
+    1.000, 1.000, 0.000,
+    0.000, 0.502, 0.000,
+    0.000, 0.000, 1.000,
+    0.294, 0.000, 0.510,
+    0.502, 0.000, 0.502,
+};
+
+#pragma mark - SECTION: Help
+
+static const float HELP_PAGE_DELAY_TIME = 3.0;
+
+#define HELP_BUTTON_VIEW_HEIGHT  DEVICE_RELATED_OBJ(60.0, 60.0)
+#define HELP_PAGE_CONTROL_HEIGHT DEVICE_RELATED_OBJ(44.0, 44.0)
+#define HELP_START_BUTTON_HEIGHT DEVICE_RELATED_OBJ(44.0, 44.0)
+#define HELP_START_BUTTON_WIDTH  DEVICE_RELATED_OBJ(200.0, 200.0)
+#define HELP_TEXT_HEIGHT         DEVICE_RELATED_OBJ(60.0, 60.0)
+#define HELP_TITLE_HEIGHT        DEVICE_RELATED_OBJ(50.0, 50.0)
 
 #endif
