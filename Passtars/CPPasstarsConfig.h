@@ -39,4 +39,15 @@ static const float _PASSWORD_RADIUS[] = {
 static const float PASSWORD_HORIZON_DISTANCE_MULTIPLIER = 1.732; // = sqrt(3)
     // distance between left and center passwords: multiplier * radius
 
+#define C(obj) obj                                   // CONSTANT
+#define D(phone, pad) DEVICE_RELATED_OBJ(phone, pad) // DEVICE RELATED
+
+#define HELP_BUTTON_VIEW_HEIGHT                        D(60.0, 60.0)
+#define HELP_PAGE_CONTROL_HEIGHT                       D(44.0, 44.0)
+#define HELP_PAGE_DELAY_TIME                           C(3.0)
+#define HELP_START_BUTTON_HEIGHT                       D(44.0, 44.0)
+#define HELP_START_BUTTON_WIDTH                        D(200.0, 200.0)
+#define HELP_TEXT_HEIGHT                               D(60.0, 60.0)
+#define HELP_TITLE_HEIGHT                              D(50.0, 50.0)
+
 #endif

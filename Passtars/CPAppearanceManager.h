@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-static const NSLayoutAttribute ATTR_END = -1;
+extern const NSLayoutAttribute ATTR_END;
 
 @interface CPAppearanceManager : NSObject
 

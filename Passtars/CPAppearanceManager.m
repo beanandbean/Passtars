@@ -12,6 +12,8 @@
 
 #import "CPProcessManager.h"
 
+const NSLayoutAttribute ATTR_END = -1;
+
 @implementation CPAppearanceManager
 
 + (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations {

@@ -6,13 +6,18 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "CPAppDelegate.h"
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([CPAppDelegate class]));
+        @try {
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass([CPAppDelegate class]));
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+            NSLog(@"%@", exception.callStackSymbols);
+        }
+        @finally {
+        }
     }
 }
