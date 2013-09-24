@@ -6,21 +6,15 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-@class CPPasswordView;
-
-@protocol CPPasswordViewDelegate <NSObject>
-
-- (void)startDragPasswordView:(CPPasswordView *)passwordView;
-- (void)dragPasswordView:(CPPasswordView *)passwordView location:(CGPoint)location translation:(CGPoint)translation;
-- (BOOL)canStopDragPasswordView:(CPPasswordView *)passwordView;
-- (void)stopDragPasswordView:(CPPasswordView *)passwordView;
-
-@end
-
-@interface CPPasswordView : UIView <UIGestureRecognizerDelegate>
+@interface CPPasswordView : UIView
 
 @property (nonatomic) float radius;
 
-- (id)initWithIndex:(int)index radius:(float)radius andDelegate:(id<CPPasswordViewDelegate>)delegate;
+- (id)initWithIndex:(int)index andRadius:(float)radius;
+
+/*
+ * point is for superview
+ */
+- (BOOL)containsPoint:(CGPoint)point;
 
 @end

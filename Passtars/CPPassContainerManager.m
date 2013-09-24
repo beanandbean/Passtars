@@ -6,22 +6,27 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
-
 #import "CPPassContainerManager.h"
 
+#import "CPAppearanceManager.h"
 #import "CPPasstarsConfig.h"
 
-#import "CPAppearanceManager.h"
+#import "CPPassDataManager.h"
 
 #import "CPMainViewController.h"
+#import "CPPasswordView.h"
 
-static float g_positioningArray[14] = {-1.0};
+#import "CPProcessManager.h"
+#import "CPDraggingPassViewProcess.h"
+
+static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 
 @interface CPPassContainerManager ()
 
 @property (strong, nonatomic) NSMutableArray *passwordViews;
 @property (strong, nonatomic) NSMutableArray *passwordConstraints;
+
+@property (weak, nonatomic) CPPasswordView *draggingView;
 
 @end
 
@@ -49,6 +54,7 @@ static float g_positioningArray[14] = {-1.0};
         m * r, r,
         m * r, -r
     };
+    NSAssert(sizeof(g_positioningArray) == sizeof(positioningArray), @"positioningArray and g_positioningArray should be the same size.");
     memcpy(g_positioningArray, positioningArray, sizeof(g_positioningArray) * sizeof(float));
 }
 
@@ -59,6 +65,14 @@ static float g_positioningArray[14] = {-1.0};
         
         [CPMainViewController startDeviceOrientationWillChangeNotifier];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:CPDeviceOrientationWillChangeNotification object:nil];
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
+        longPress.delegate = self;
+        [self.superview addGestureRecognizer:longPress];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+        pan.delegate = self;
+        [self.superview addGestureRecognizer:pan];
     }
     return self;
 }
@@ -71,7 +85,7 @@ static float g_positioningArray[14] = {-1.0};
 - (void)loadAnimated:(BOOL)animated {
     float radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
     for (int i = 0; i < MAX_PASSWORD_COUNT; i++) {
-        CPPasswordView *passwordView = [[CPPasswordView alloc] initWithIndex:i radius:radius andDelegate:self];
+        CPPasswordView *passwordView = [[CPPasswordView alloc] initWithIndex:i andRadius:radius];
         [self.superview addSubview:passwordView];
         [self.passwordViews addObject:passwordView];
     }
@@ -107,24 +121,56 @@ static float g_positioningArray[14] = {-1.0};
     [self refreshRadiusWithOrientation:orientation];
 }
 
-#pragma mark - CPPasswordViewDelegate implement
-
-// TODO: Fill in CPPasswordViewDelegate implementation in CPPassContainerManager.
-
-- (void)startDragPasswordView:(CPPasswordView *)passwordView {
-    
+- (CPPasswordView *)passwordViewInLocation:(CGPoint)location {
+    CPPasswordView *foundPasswordView = nil;
+    for (CPPasswordView *passwordView in self.passwordViews) {
+        if ([passwordView containsPoint:location]) {
+            foundPasswordView = passwordView;
+            break;
+        }
+    }
+    return foundPasswordView;
 }
 
-- (void)dragPasswordView:(CPPasswordView *)passwordView location:(CGPoint)location translation:(CGPoint)translation {
-    
+- (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        self.draggingView = [self passwordViewInLocation:[gesture locationInView:gesture.view]];
+        if (self.draggingView) {
+            NSLog(@"Long press in %@", self.draggingView);
+            [CPProcessManager startProcess:DRAGGING_PASS_VIEW_PROCESS withPreparation:^{
+            }];
+        }
+    } else if (gesture.state == UIGestureRecognizerStateEnded || gesture.state == UIGestureRecognizerStateCancelled || gesture.state == UIGestureRecognizerStateFailed) {
+        if (IS_IN_PROCESS(DRAGGING_PASS_VIEW_PROCESS) /* && [self.delegate canStopDragPasswordView:self] */) {
+            [CPProcessManager stopProcess:DRAGGING_PASS_VIEW_PROCESS withPreparation:^{
+            }];
+        }
+    }
 }
 
-- (BOOL)canStopDragPasswordView:(CPPasswordView *)passwordView {
-    return YES;
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [gesture translationInView:gesture.view];
+        if (IS_IN_PROCESS(DRAGGING_PASS_VIEW_PROCESS)) {
+            CGPoint location = [gesture locationInView:gesture.view];
+            [gesture setTranslation:CGPointZero inView:gesture.view];
+        }
+    } else if (gesture.state == UIGestureRecognizerStateEnded || gesture.state == UIGestureRecognizerStateCancelled || gesture.state == UIGestureRecognizerStateFailed) {
+        if (IS_IN_PROCESS(DRAGGING_PASS_VIEW_PROCESS) /* && [self.delegate canStopDragPasswordView:self] */) {
+            [CPProcessManager stopProcess:DRAGGING_PASS_VIEW_PROCESS withPreparation:^{
+            }];
+        }
+    }
 }
 
-- (void)stopDragPasswordView:(CPPasswordView *)passwordView {
-    
+#pragma mark - UIGestureRecognizerDelegate implement
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    if (([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) || ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]])) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate implement

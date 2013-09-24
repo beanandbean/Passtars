@@ -6,12 +6,10 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+
 #import "CPViewManager.h"
 
-#import "CPPasswordView.h"
-
-#import "CPPassDataManager.h"
-
-@interface CPPassContainerManager : CPViewManager <CPPasswordViewDelegate, NSFetchedResultsControllerDelegate>
+@interface CPPassContainerManager : CPViewManager <NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate>
 
 @end

@@ -235,13 +235,13 @@
 		FCC1594717EEBDE800685498 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CE7586917F0485D0008BD2D /* SystemConfiguration.framework */,
-				2CE7586717F048320008BD2D /* CoreImage.framework */,
 				FCC159B817EEE4C600685498 /* CoreData.framework */,
+				FCC1594A17EEBDE800685498 /* CoreGraphics.framework */,
+				2CE7586717F048320008BD2D /* CoreImage.framework */,
+				FCC1594817EEBDE800685498 /* Foundation.framework */,
 				FCC159B617EEE4BE00685498 /* iAd.framework */,
 				FCC159B417EEE4B700685498 /* StoreKit.framework */,
-				FCC1594817EEBDE800685498 /* Foundation.framework */,
-				FCC1594A17EEBDE800685498 /* CoreGraphics.framework */,
+				2CE7586917F0485D0008BD2D /* SystemConfiguration.framework */,
 				FCC1594C17EEBDE800685498 /* UIKit.framework */,
 				FCC1596A17EEBDE800685498 /* XCTest.framework */,
 			);
