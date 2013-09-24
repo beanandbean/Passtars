@@ -8,8 +8,6 @@
 
 #import "CPPassContainerManager.h"
 
-#import "CPPasswordView.h"
-
 #import "CPPasstarsConfig.h"
 
 #import "CPAppearanceManager.h"
@@ -69,7 +67,7 @@ static float g_positioningArray[14] = {-1.0};
 - (void)loadAnimated:(BOOL)animated {
     float radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
     for (int i = 0; i < MAX_PASSWORD_COUNT; i++) {
-        CPPasswordView *passwordView = [[CPPasswordView alloc] initWithIndex:i andRadius:radius];
+        CPPasswordView *passwordView = [[CPPasswordView alloc] initWithIndex:i radius:radius andDelegate:self];
         [self.superview addSubview:passwordView];
         [self.passwordViews addObject:passwordView];
     }
@@ -103,6 +101,26 @@ static float g_positioningArray[14] = {-1.0};
     [CPPassContainerManager refreshPositionsWithOrientation:orientation];
     [self refreshConstraints];
     [self refreshRadiusWithOrientation:orientation];
+}
+
+#pragma mark - CPPasswordViewDelegate implement
+
+// TODO: Fill in CPPasswordViewDelegate implementation in CPPassContainerManager.
+
+- (void)startDragPasswordView:(CPPasswordView *)passwordView {
+    
+}
+
+- (void)dragPasswordView:(CPPasswordView *)passwordView location:(CGPoint)location translation:(CGPoint)translation {
+    
+}
+
+- (BOOL)canStopDragPasswordView:(CPPasswordView *)passwordView {
+    return YES;
+}
+
+- (void)stopDragPasswordView:(CPPasswordView *)passwordView {
+    
 }
 
 #pragma mark - lazy init

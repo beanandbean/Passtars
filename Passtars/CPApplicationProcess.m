@@ -8,6 +8,8 @@
 
 #import "CPApplicationProcess.h"
 
+#import "CPDraggingPassViewProcess.h"
+
 static CPApplicationProcess *g_process;
 static NSArray *g_allowedProcess;
 
@@ -21,7 +23,10 @@ static NSArray *g_allowedProcess;
 }
 
 - (BOOL)allowSubprocess:(id<CPProcess>)process {
-    return NO;
+    if (!g_allowedProcess) {
+        g_allowedProcess = [NSArray arrayWithObjects:DRAGGING_PASS_VIEW_PROCESS, nil];
+    }
+    return [g_allowedProcess indexOfObject:process] != NSNotFound;
 }
 
 @end

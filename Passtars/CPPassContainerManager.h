@@ -8,6 +8,8 @@
 
 #import "CPViewManager.h"
 
-@interface CPPassContainerManager : CPViewManager
+#import "CPPasswordView.h"
+
+@interface CPPassContainerManager : CPViewManager <CPPasswordViewDelegate>
 
 @end
