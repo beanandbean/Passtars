@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 codingpotato. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+
 #import "CPPassContainerManager.h"
 
 #import "CPPasstarsConfig.h"
@@ -53,6 +55,8 @@ static float g_positioningArray[14] = {-1.0};
 - (id)initWithSupermanager:(CPViewManager *)supermanager andSuperview:(UIView *)superview {
     self = [super initWithSupermanager:supermanager andSuperview:superview];
     if (self) {
+        [CPPassDataManager defaultManager].passwordsController.delegate = self;
+        
         [CPMainViewController startDeviceOrientationWillChangeNotifier];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:CPDeviceOrientationWillChangeNotification object:nil];
     }
@@ -121,6 +125,23 @@ static float g_positioningArray[14] = {-1.0};
 
 - (void)stopDragPasswordView:(CPPasswordView *)passwordView {
     
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate implement
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeUpdate:
+            [(CPPasswordView *)[self.passwordViews objectAtIndex:indexPath.row] setNeedsDisplay];
+            break;
+        case NSFetchedResultsChangeMove:
+            [(CPPasswordView *)[self.passwordViews objectAtIndex:indexPath.row] setNeedsDisplay];
+            [(CPPasswordView *)[self.passwordViews objectAtIndex:newIndexPath.row] setNeedsDisplay];
+            break;
+        default:
+            NSAssert(NO, @"Unknowed change reported by NSFetchResultsController!");
+            break;
+    }
 }
 
 #pragma mark - lazy init

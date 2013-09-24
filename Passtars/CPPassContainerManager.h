@@ -10,6 +10,8 @@
 
 #import "CPPasswordView.h"
 
-@interface CPPassContainerManager : CPViewManager <CPPasswordViewDelegate>
+#import "CPPassDataManager.h"
+
+@interface CPPassContainerManager : CPViewManager <CPPasswordViewDelegate, NSFetchedResultsControllerDelegate>
 
 @end

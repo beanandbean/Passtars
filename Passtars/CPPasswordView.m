@@ -12,6 +12,9 @@
 
 #import "CPAppearanceManager.h"
 
+#import "CPPassDataManager.h"
+#import "CPPassword.h"
+
 #import "CPProcessManager.h"
 #import "CPDraggingPassViewProcess.h"
 
@@ -63,8 +66,11 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGFloat r = DEFAULT_PASSWORD_COLORS[self.index * 3], g = DEFAULT_PASSWORD_COLORS[self.index * 3 + 1], b = DEFAULT_PASSWORD_COLORS[self.index * 3 + 2];
-    
+    CPPassword *password = [[CPPassDataManager defaultManager].passwordsController.fetchedObjects objectAtIndex:self.index];
+    UIColor *passwordColor = password.realColor;
+    CGFloat r, g, b, a;
+    [passwordColor getRed:&r green:&g blue:&b alpha:&a];
+
     size_t count = 11;
     CGFloat locations[count];
     CGFloat components[count * 4];
