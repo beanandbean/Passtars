@@ -15,14 +15,14 @@
 @interface CPPasswordView ()
 
 @property (nonatomic) int index;
-@property (nonatomic) float radius;
+
+@property (strong, nonatomic) NSArray *sizeConstraints;
 
 @end
 
 @implementation CPPasswordView
 
-- (id)initWithIndex:(int)index andRadius:(float)radius
-{
+- (id)initWithIndex:(int)index andRadius:(float)radius {
     self = [super init];
     if (self) {
         self.index = index;
@@ -30,9 +30,6 @@
         
         self.backgroundColor = [UIColor clearColor];
         self.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self addConstraint:[CPAppearanceManager constraintWithView:self height:radius * 2]];
-        [self addConstraint:[CPAppearanceManager constraintWithView:self width:radius * 2]];
     }
     return self;
 }
@@ -63,6 +60,31 @@
     CGFloat startRadius = 0.0, endRadius = self.radius;
     
     CGContextDrawRadialGradient(context, gradient, startCenter, startRadius, endCenter, endRadius, 0);
+}
+
+- (void)setRadius:(float)radius {
+    _radius = radius;
+    
+    if (_sizeConstraints) {
+        [self removeConstraints:_sizeConstraints];
+        _sizeConstraints = nil;
+    }
+    
+    [self addConstraints:self.sizeConstraints];
+    
+    [self setNeedsDisplay];
+}
+
+#pragma mark - lazy init
+
+- (NSArray *)sizeConstraints {
+    if (!_sizeConstraints) {
+        _sizeConstraints = [NSArray arrayWithObjects:
+                            [CPAppearanceManager constraintWithView:self height:self.radius * 2],
+                            [CPAppearanceManager constraintWithView:self width:self.radius * 2],
+                            nil];
+    }
+    return _sizeConstraints;
 }
 
 @end

@@ -18,7 +18,7 @@
 
 static const char *DEFAULT_ICONS[] = {"aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius"};
 
-static NSString *PASSWORD_CACHE_NAME = @"PasswordCache";
+static NSString *const PASSWORD_CACHE_NAME = @"PasswordCache";
 
 @interface CPPassDataManager ()
 

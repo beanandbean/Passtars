@@ -8,7 +8,7 @@
 
 #import <StoreKit/StoreKit.h>
 
-extern const NSString * const CPProductNameRemoveAd;
+extern const NSString *const CPProductNameRemoveAd;
 
 @class CPIAPHelper;
 

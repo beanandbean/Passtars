@@ -8,8 +8,8 @@
 
 #import "CPUserDefaultManager.h"
 
-static NSString *KEY_IS_FIRST_RUNNING = @"IsFirstRunning";
-static NSString *KEY_MAIN_PASS = @"MainPass";
+static NSString *const KEY_IS_FIRST_RUNNING = @"IsFirstRunning";
+static NSString *const KEY_MAIN_PASS = @"MainPass";
 
 @implementation CPUserDefaultManager
 

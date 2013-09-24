@@ -10,6 +10,10 @@
 
 #import "CPRootManager.h"
 
+NSString *const CPDeviceOrientationWillChangeNotification = @"DEVICE_ROTATION_NOTIFICATION";
+
+static int g_deviceOrientationWillChangeNotifierRequestCount = 0;
+
 @interface CPMainViewController ()
 
 @property (strong, nonatomic) CPRootManager *rootManager;
@@ -17,6 +21,16 @@
 @end
 
 @implementation CPMainViewController
+
++ (void)startDeviceOrientationWillChangeNotifier {
+    g_deviceOrientationWillChangeNotifierRequestCount++;
+}
+
++ (void)stopDeviceOrientationWillChangeNotifier {
+    if (g_deviceOrientationWillChangeNotifierRequestCount > 0) {
+        g_deviceOrientationWillChangeNotifierRequestCount--;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +41,12 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (g_deviceOrientationWillChangeNotifierRequestCount > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CPDeviceOrientationWillChangeNotification object:[NSNumber numberWithInteger:toInterfaceOrientation]];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

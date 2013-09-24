@@ -82,6 +82,8 @@
 - (ADBannerView *)iAdBannerView {
     if (!_iAdBannerView) {
         _iAdBannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+        
+        _iAdBannerView.hidden = YES;
         _iAdBannerView.delegate = self;
         _iAdBannerView.translatesAutoresizingMaskIntoConstraints = NO;        
     }

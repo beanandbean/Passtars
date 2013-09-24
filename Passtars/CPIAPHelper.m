@@ -10,7 +10,7 @@
 
 #import "CPUserDefaultManager.h"
 
-const NSString * const CPProductNameRemoveAd = @"codingpotato.Passtars.RemoveAd";
+const NSString *const CPProductNameRemoveAd = @"codingpotato.Passtars.RemoveAd";
 
 @interface CPIAPHelper ()
 

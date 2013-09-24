@@ -8,6 +8,8 @@
 
 @interface CPPasswordView : UIView
 
+@property (nonatomic) float radius;
+
 - (id)initWithIndex:(int)index andRadius:(float)size;
 
 @end
