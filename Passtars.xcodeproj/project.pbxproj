@@ -46,6 +46,11 @@
 		FCC159B517EEE4B700685498 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B417EEE4B700685498 /* StoreKit.framework */; };
 		FCC159B717EEE4BE00685498 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B617EEE4BE00685498 /* iAd.framework */; };
 		FCC159B917EEE4C600685498 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC159B817EEE4C600685498 /* CoreData.framework */; };
+		FCDDBBB517F32DCC0041036A /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDDBBB317F32DCC0041036A /* libGoogleAdMobAds.a */; };
+		FCDDBBB617F32DCC0041036A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCDDBBB417F32DCC0041036A /* README.txt */; };
+		FCDDBBB817F330010041036A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDDBBB717F330010041036A /* AudioToolbox.framework */; };
+		FCDDBBBA17F330300041036A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDDBBB917F330300041036A /* MessageUI.framework */; };
+		FCDDBBBC17F330470041036A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDDBBBB17F330470041036A /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +130,20 @@
 		FCC159B417EEE4B700685498 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FCC159B617EEE4BE00685498 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		FCC159B817EEE4C600685498 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FCDDBBAA17F32DCC0041036A /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		FCDDBBAB17F32DCC0041036A /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		FCDDBBAC17F32DCC0041036A /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		FCDDBBAD17F32DCC0041036A /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		FCDDBBAE17F32DCC0041036A /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		FCDDBBAF17F32DCC0041036A /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		FCDDBBB017F32DCC0041036A /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		FCDDBBB117F32DCC0041036A /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		FCDDBBB217F32DCC0041036A /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		FCDDBBB317F32DCC0041036A /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		FCDDBBB417F32DCC0041036A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		FCDDBBB717F330010041036A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FCDDBBB917F330300041036A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		FCDDBBBB17F330470041036A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +151,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDDBBBC17F330470041036A /* AdSupport.framework in Frameworks */,
+				FCDDBBBA17F330300041036A /* MessageUI.framework in Frameworks */,
+				FCDDBBB817F330010041036A /* AudioToolbox.framework in Frameworks */,
 				2CE7586A17F0485D0008BD2D /* SystemConfiguration.framework in Frameworks */,
 				2CE7586817F048320008BD2D /* CoreImage.framework in Frameworks */,
+				FCDDBBB517F32DCC0041036A /* libGoogleAdMobAds.a in Frameworks */,
 				FCC159B917EEE4C600685498 /* CoreData.framework in Frameworks */,
 				FCC159B717EEE4BE00685498 /* iAd.framework in Frameworks */,
 				FCC159B517EEE4B700685498 /* StoreKit.framework in Frameworks */,
@@ -237,11 +260,14 @@
 		FCC1594717EEBDE800685498 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCDDBBBB17F330470041036A /* AdSupport.framework */,
+				FCDDBBB717F330010041036A /* AudioToolbox.framework */,
 				FCC159B817EEE4C600685498 /* CoreData.framework */,
 				FCC1594A17EEBDE800685498 /* CoreGraphics.framework */,
 				2CE7586717F048320008BD2D /* CoreImage.framework */,
 				FCC1594817EEBDE800685498 /* Foundation.framework */,
 				FCC159B617EEE4BE00685498 /* iAd.framework */,
+				FCDDBBB917F330300041036A /* MessageUI.framework */,
 				FCC159B417EEE4B700685498 /* StoreKit.framework */,
 				2CE7586917F0485D0008BD2D /* SystemConfiguration.framework */,
 				FCC1594C17EEBDE800685498 /* UIKit.framework */,
@@ -253,6 +279,7 @@
 		FCC1594E17EEBDE800685498 /* Passtars */ = {
 			isa = PBXGroup;
 			children = (
+				FCDDBBA917F32DA40041036A /* AdMob */,
 				FCC1595717EEBDE800685498 /* CPAppDelegate.h */,
 				FCC1595817EEBDE800685498 /* CPAppDelegate.m */,
 				FCC1598E17EED8FF00685498 /* CPAppearanceManager.h */,
@@ -314,6 +341,24 @@
 				FCC1597317EEBDE800685498 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCDDBBA917F32DA40041036A /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDBBAA17F32DCC0041036A /* GADAdMobExtras.h */,
+				FCDDBBAB17F32DCC0041036A /* GADAdNetworkExtras.h */,
+				FCDDBBAC17F32DCC0041036A /* GADAdSize.h */,
+				FCDDBBAD17F32DCC0041036A /* GADBannerView.h */,
+				FCDDBBAE17F32DCC0041036A /* GADBannerViewDelegate.h */,
+				FCDDBBAF17F32DCC0041036A /* GADInterstitial.h */,
+				FCDDBBB017F32DCC0041036A /* GADInterstitialDelegate.h */,
+				FCDDBBB117F32DCC0041036A /* GADRequest.h */,
+				FCDDBBB217F32DCC0041036A /* GADRequestError.h */,
+				FCDDBBB317F32DCC0041036A /* libGoogleAdMobAds.a */,
+				FCDDBBB417F32DCC0041036A /* README.txt */,
+			);
+			name = AdMob;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +451,7 @@
 			files = (
 				FCC1596417EEBDE800685498 /* Images.xcassets in Resources */,
 				FCC1595C17EEBDE800685498 /* Passtars.storyboard in Resources */,
+				FCDDBBB617F32DCC0041036A /* README.txt in Resources */,
 				FCC1595317EEBDE800685498 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +630,11 @@
 				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
 				INFOPLIST_FILE = "Passtars/Passtars-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/codingpotato/Development/Passtars/Passtars,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -603,6 +654,11 @@
 				GCC_PREFIX_HEADER = "Passtars/Passtars-Prefix.pch";
 				INFOPLIST_FILE = "Passtars/Passtars-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/codingpotato/Development/Passtars/Passtars,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

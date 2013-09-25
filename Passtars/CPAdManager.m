@@ -11,12 +11,15 @@
 #import "CPHelperMacros.h"
 
 #import "CPAppearanceManager.h"
+#import "CPMainViewController.h"
 
 #import "Reachability.h"
+#import "GADBannerView.h"
 
 @interface CPAdManager ()
 
 @property (strong, nonatomic) ADBannerView *iAdBannerView;
+@property (strong, nonatomic) GADBannerView *gAdBannerView;
 
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint;
 
@@ -27,15 +30,20 @@
 @implementation CPAdManager
 
 - (void)loadAnimated:(BOOL)animated {
-    [super loadAnimated:animated];
-    
-    [self.superview addSubview:self.iAdBannerView];
+    /*[self.superview addSubview:self.iAdBannerView];
     [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.superview edgesAlignToView:self.iAdBannerView]];
     [self.superview addConstraint:self.heightConstraint];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     [self.appleReachability startNotifier];
-    [self displayAdBanner];
+    [self displayAdBanner];*/
+    
+    [self.superview addSubview:self.gAdBannerView];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.superview edgesAlignToView:self.gAdBannerView]];
+    [self.superview addConstraint:[CPAppearanceManager constraintWithView:self.superview height:50.0]];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+    [self.gAdBannerView loadRequest:request];
 }
 
 - (void)unloadAnimated:(BOOL)animated {
@@ -88,6 +96,16 @@
         _iAdBannerView.translatesAutoresizingMaskIntoConstraints = NO;        
     }
     return _iAdBannerView;
+}
+
+- (GADBannerView *)gAdBannerView {
+    if (!_gAdBannerView) {
+        _gAdBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        _gAdBannerView.adUnitID = @"a15242f40e06c1f";
+        _gAdBannerView.rootViewController = [CPMainViewController mainViewController];
+        _gAdBannerView.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _gAdBannerView;
 }
 
 - (NSLayoutConstraint *)heightConstraint {

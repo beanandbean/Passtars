@@ -10,6 +10,8 @@ extern NSString *const CPDeviceOrientationWillChangeNotification;
 
 @interface CPMainViewController : UIViewController
 
++ (CPMainViewController *)mainViewController;
+
 + (void)startDeviceOrientationWillChangeNotifier;
 + (void)stopDeviceOrientationWillChangeNotifier;
 
