@@ -58,7 +58,8 @@ static CPPassDataManager *defaultManager = nil;
             for (NSUInteger index = 0; index < MAX_PASSWORD_COUNT; index++) {
                 CPPassword *password = [NSEntityDescription insertNewObjectForEntityForName:@"Password" inManagedObjectContext:self.managedObjectContext];
                 password.index = [NSNumber numberWithUnsignedInteger:index];
-                password.isUsed = [NSNumber numberWithBool:NO];
+                /* debug code, remove later */
+                password.isUsed = [NSNumber numberWithBool:index % 2 ? YES : NO];
                 password.text = @"";
                 password.colorIndex = [NSNumber numberWithInt:index];
                 password.icon = CSTR_TO_OBJC(PASSWORD_ICON_NAMES[index]);

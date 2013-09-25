@@ -57,33 +57,42 @@
     
     CPPassword *password = [[CPPassDataManager defaultManager].passwordsController.fetchedObjects objectAtIndex:self.index];
     
-    UIColor *passwordColor = password.color;
-    CGFloat r, g, b, a;
-    [passwordColor getRed:&r green:&g blue:&b alpha:&a];
-
-    size_t count = 11;
-    CGFloat locations[count];
-    CGFloat components[count * 4];
-    
-    for (int i = 0; i < count; i++) {
-        locations[i] = i / (count - 1.0);
-        components[i * 4] = r;
-        components[i * 4 + 1] = g;
-        components[i * 4 + 2] = b;
-        components[i * 4 + 3] = 1.0 - powf(i / (count - 1.0), PASSWORD_GRADIENT_EXPONENT);
+    if (password.isUsed.boolValue) {
+        UIColor *passwordColor = password.color;
+        CGFloat r, g, b, a;
+        [passwordColor getRed:&r green:&g blue:&b alpha:&a];
+        
+        size_t count = 11;
+        CGFloat locations[count];
+        CGFloat components[count * 4];
+        
+        for (int i = 0; i < count; i++) {
+            locations[i] = i / (count - 1.0);
+            components[i * 4] = r;
+            components[i * 4 + 1] = g;
+            components[i * 4 + 2] = b;
+            components[i * 4 + 3] = 1.0 - powf(i / (count - 1.0), PASSWORD_GRADIENT_EXPONENT);
+        }
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, count);
+        CGColorSpaceRelease(colorSpace);
+        
+        CGPoint startCenter = CGPointMake(self.radius, self.radius);
+        CGPoint endCenter = CGPointMake(self.radius, self.radius);
+        CGFloat startRadius = 0.0, endRadius = self.radius;
+        
+        CGContextDrawRadialGradient(context, gradient, startCenter, startRadius, endCenter, endRadius, 0);
+    } else {
+        static const CGFloat length[] = {10.0, 10.0};
+        CGContextSetLineDash(context, 0.0, length, sizeof(length) / sizeof(CGFloat));
+        CGContextSetLineWidth(context, 1.0);
+        CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
+        CGContextAddEllipseInRect(context, CGRectInset(self.bounds, 5.0, 5.0));
+        CGContextStrokePath(context);
     }
     
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, count);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGPoint startCenter = CGPointMake(self.radius, self.radius);
-    CGPoint endCenter = CGPointMake(self.radius, self.radius);
-    CGFloat startRadius = 0.0, endRadius = self.radius;
-    
-    CGContextDrawRadialGradient(context, gradient, startCenter, startRadius, endCenter, endRadius, 0);
-    
-    UIImage *icon = [UIImage imageNamed:password.icon];
+    UIImage *icon = [UIImage imageNamed:password.displayIcon];
     [icon drawInRect:CGRectMake(self.radius - icon.size.width / 2, self.radius - icon.size.height / 2, icon.size.width, icon.size.height)];
 }
 

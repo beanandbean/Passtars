@@ -59,7 +59,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
         m * r, -r
     };
     NSAssert(sizeof(g_positioningArray) == sizeof(positioningArray), @"positioningArray and g_positioningArray should be the same size.");
-    memcpy(g_positioningArray, positioningArray, sizeof(g_positioningArray) * sizeof(float));
+    memcpy(g_positioningArray, positioningArray, sizeof(g_positioningArray));
 }
 
 - (id)initWithSupermanager:(CPViewManager *)supermanager andSuperview:(UIView *)superview {
