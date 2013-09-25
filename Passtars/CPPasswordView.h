@@ -8,13 +8,13 @@
 
 @interface CPPasswordView : UIView
 
+@property (nonatomic) int index;
 @property (nonatomic) float radius;
 
 - (id)initWithIndex:(int)index andRadius:(float)radius;
 
-/*
- * point is for superview
- */
+
+// 'point' is relative to self.superview
 - (BOOL)containsPoint:(CGPoint)point;
 
 @end

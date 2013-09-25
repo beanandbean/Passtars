@@ -33,7 +33,8 @@ static const float _PASSWORD_RADIUS[] = {
 static const float PASSWORD_HORIZON_DISTANCE_MULTIPLIER = 1.732; // = sqrt(3)
     // distance between left and center passwords: multiplier * radius
 
-static const float PASSWORD_SIZE_MULTIPLIER = 0.95;
+static const float PASSWORD_SIZE_MULTIPLIER = 0.95; // normal size = PASSWORD_RADIUS * size multiplier
+static const float PASSWORD_DRAG_SIZE_MULTIPLIER = 1.1; // drag size = PASSWORD_RADIUS * drag multiplier
 
 static const float PASSWORD_GRADIENT_EXPONENT = 1.75;
 

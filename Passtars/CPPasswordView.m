@@ -17,8 +17,6 @@
 
 @interface CPPasswordView ()
 
-@property (nonatomic) int index;
-
 @property (nonatomic, strong) NSArray *sizeConstraints;
 
 @end
