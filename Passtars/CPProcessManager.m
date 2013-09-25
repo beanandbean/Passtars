@@ -63,7 +63,7 @@ static int g_forbiddenCount = 0;
 
 + (bool)stopProcess:(id<CPProcess>)process {
     if (!g_forbiddenCount && process != APPLICATION_PROCESS) {
-        int index = PROCESS_ARRAY.count - 1;
+        NSUInteger index = PROCESS_ARRAY.count - 1;
         while (index > 0 && [PROCESS_ARRAY objectAtIndex:index] != process) {
             index--;
         }

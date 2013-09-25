@@ -49,14 +49,15 @@
 }
 
 - (BOOL)containsPoint:(CGPoint)point {
-    return (point.x - self.center.x) * (point.x - self.center.x) + (point.y - self.center.y) * (point.y - self.center.y) <= self.radius * self.radius;
+    return CIRCLE_CONTAIN_POINT(self.center, self.radius, point);
 }
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CPPassword *password = [[CPPassDataManager defaultManager].passwordsController.fetchedObjects objectAtIndex:self.index];
-    UIColor *passwordColor = password.realColor;
+    
+    UIColor *passwordColor = password.color;
     CGFloat r, g, b, a;
     [passwordColor getRed:&r green:&g blue:&b alpha:&a];
 
@@ -81,6 +82,9 @@
     CGFloat startRadius = 0.0, endRadius = self.radius;
     
     CGContextDrawRadialGradient(context, gradient, startCenter, startRadius, endCenter, endRadius, 0);
+    
+    UIImage *icon = [UIImage imageNamed:password.icon];
+    [icon drawInRect:CGRectMake(self.radius - icon.size.width / 2, self.radius - icon.size.height / 2, icon.size.width, icon.size.height)];
 }
 
 #pragma mark - lazy init

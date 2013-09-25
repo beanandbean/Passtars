@@ -154,7 +154,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     [self.superview layoutIfNeeded];
     
     CPPasswordView *newDestinationView = [self passwordViewAtLocation:location];
-    if (newDestinationView != self.dragDestinationView) {
+    if (newDestinationView != self.dragSourceView && newDestinationView != self.dragDestinationView) {
         if (self.dragDestinationView) {
             self.dragDestinationView.radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
         }
@@ -230,7 +230,6 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     if (gesture.state == UIGestureRecognizerStateBegan) {
         self.dragSourceView = [self passwordViewAtLocation:[gesture locationInView:gesture.view]];
         if (self.dragSourceView) {
-            NSLog(@"Long press in %@", self.dragSourceView);
             [CPProcessManager startProcess:DRAGGING_PASS_VIEW_PROCESS withPreparation:^{
                 [self startDragPasswordView];
             }];

@@ -9,6 +9,9 @@
 #ifndef _HELPER_MACROS_
 #define _HELPER_MACROS_
 
+#define CIRCLE_CONTAIN_POINT(center, radius, point) \
+    ((point.x - center.x) * (point.x - center.x) + (point.y - center.y) * (point.y - center.y) <= radius * radius)
+
 #define CSTR_TO_OBJC(str) /* Using ASCII for string encoding */ \
     [NSString stringWithCString:str encoding:NSASCIIStringEncoding]
 
@@ -20,9 +23,6 @@
 
 #define DEVICE_RELATED_OBJ(phone, pad) \
     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? phone : pad)
-
-#define DEVICE_RELATED_PNG(name) /* The acceptable way of naming files is to call them 'some_pic.png' & 'some_pic_ipad.png' */ \
-    [name stringByAppendingFormat:@"%@.png", DEVICE_RELATED_OBJ(@"", @"_ipad")]
 
 #define ORIENTATION_RELATED_OBJ(landscape, portrait) \
     SPECIFIED_ORIENTATION_RELATED_OBJ(CURRENT_ORIENTATION, landscape, portrait)

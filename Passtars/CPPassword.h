@@ -19,11 +19,8 @@
 @property (nonatomic, retain) NSString *icon;
 @property (nonatomic, retain) NSSet *memos;
 
-- (UIColor *)realColor;
-- (UIColor *)displayColor;
-- (UIColor *)reversedColor;
+- (UIColor *)color;
 
-- (NSString *)realIcon;
 - (NSString *)displayIcon;
 - (NSString *)reversedIcon;
 

@@ -117,7 +117,7 @@
 
 - (void)autoScrollToNextPage {
     if (!self.manualScrolling) {
-        int nextPage = (self.pageControl.currentPage + 1) % self.pageControl.numberOfPages;
+        NSInteger nextPage = (self.pageControl.currentPage + 1) % self.pageControl.numberOfPages;
         [self.scrollView setContentOffset:CGPointMake(nextPage * self.scrollView.bounds.size.width, 0) animated:YES];
         
         [self performSelector:@selector(autoScrollToNextPage) withObject:nil afterDelay:HELP_PAGE_DELAY_TIME];
