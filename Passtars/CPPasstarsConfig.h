@@ -33,6 +33,7 @@
 
 #define PASSWORD_SIZE_MULTIPLIER               0.95 // normal size = RADIUS * size multiplier
 #define PASSWORD_DRAG_SIZE_MULTIPLIER          1.15 // drag size = RADIUS * drag multiplier
+#define PASSWORD_SHINING_SIZE_MULTIPLIER       0.8  // shinning size = normal size * shinning multiplier
 #define PASSWORD_UNUSED_CIRCLE_SIZE_MULTIPLIER 0.75 // circle size = normal size * circle multiplier
 
 #define PASSWORD_DEFAULT_ICON @"Add"
@@ -42,6 +43,9 @@
 
 #define PASSWORD_DASH_REPEAT_COUNT 15
 #define PASSWORD_DASH_LINE_WIDTH   5.0
+
+#define PASSWORD_RANGE_DASH_REPEAT_COUNT 50
+#define PASSWORD_RANGE_DASH_LINE_WIDTH   5.0
 
 extern const float _PASSWORD_RADIUS[];
 

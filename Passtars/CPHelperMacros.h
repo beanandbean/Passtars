@@ -35,6 +35,10 @@
     /* CGRect rectWithCenterAndSize(CGPoint center, CGSize size) */ \
     CGRectMake(center.x - size.width / 2, center.y - size.height / 2, size.width, size.height)
 
+#define rectContainingCircle(center, radius) \
+    /* CGRect rectContainingCircle(CGPoint center, CGFloat radius) */ \
+    CGRectMake(center.x - radius, center.y - radius, radius * 2, radius * 2)
+
 #define specifiedOrientationRelatedObj(orientation, landscape, portrait) \
     /* n_s specifiedOrientationRelatedObj(UIInterfaceOrientation orientation, n_s landscape, n_s portrait) */ \
     (UIInterfaceOrientationIsLandscape(orientation) ? landscape : portrait)

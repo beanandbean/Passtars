@@ -12,6 +12,9 @@
 @property (nonatomic) int index;
 @property (nonatomic) float radius;
 
+@property (nonatomic) BOOL isShining; // Shining is to glow when unused. It is an interaction to dragging.
+
+
 @property (nonatomic, weak) CPPassword *password;
 
 - (id)initWithIndex:(int)index andRadius:(float)radius;

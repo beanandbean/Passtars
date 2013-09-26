@@ -13,6 +13,7 @@
 		2C8D34E317EEF83B00AD110C /* CPPassContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D34E217EEF83B00AD110C /* CPPassContainerManager.m */; };
 		2CA98E6417F2EF73008E88A0 /* CPPasstarsConfig.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CA98E6317F2EF73008E88A0 /* CPPasstarsConfig.c */; };
 		2CC1109717F19BAA00C62D06 /* CPDraggingPassViewProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC1109617F19BAA00C62D06 /* CPDraggingPassViewProcess.m */; };
+		2CC390DB17F4434400B3B08E /* CPPasswordRangeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC390DA17F4434400B3B08E /* CPPasswordRangeView.m */; };
 		2CE7586617F041050008BD2D /* CPPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7586517F041050008BD2D /* CPPasswordView.m */; };
 		2CE7586817F048320008BD2D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE7586717F048320008BD2D /* CoreImage.framework */; };
 		2CE7586A17F0485D0008BD2D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE7586917F0485D0008BD2D /* SystemConfiguration.framework */; };
@@ -75,6 +76,8 @@
 		2CA98E6317F2EF73008E88A0 /* CPPasstarsConfig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CPPasstarsConfig.c; sourceTree = "<group>"; };
 		2CC1109517F19BAA00C62D06 /* CPDraggingPassViewProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDraggingPassViewProcess.h; sourceTree = "<group>"; };
 		2CC1109617F19BAA00C62D06 /* CPDraggingPassViewProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDraggingPassViewProcess.m; sourceTree = "<group>"; };
+		2CC390D917F4434400B3B08E /* CPPasswordRangeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPasswordRangeView.h; sourceTree = "<group>"; };
+		2CC390DA17F4434400B3B08E /* CPPasswordRangeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPasswordRangeView.m; sourceTree = "<group>"; };
 		2CE7586417F041050008BD2D /* CPPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPasswordView.h; sourceTree = "<group>"; };
 		2CE7586517F041050008BD2D /* CPPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPasswordView.m; sourceTree = "<group>"; };
 		2CE7586717F048320008BD2D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -232,6 +235,8 @@
 			children = (
 				2CE7586417F041050008BD2D /* CPPasswordView.h */,
 				2CE7586517F041050008BD2D /* CPPasswordView.m */,
+				2CC390D917F4434400B3B08E /* CPPasswordRangeView.h */,
+				2CC390DA17F4434400B3B08E /* CPPasswordRangeView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				FCC159B317EEE44500685498 /* CPPassDataManager.m in Sources */,
 				FCC159B217EEE44500685498 /* CPMemo.m in Sources */,
 				FCC159AC17EEE42400685498 /* Passtars.xcdatamodeld in Sources */,
+				2CC390DB17F4434400B3B08E /* CPPasswordRangeView.m in Sources */,
 				2CA98E6417F2EF73008E88A0 /* CPPasstarsConfig.c in Sources */,
 				2CE7586617F041050008BD2D /* CPPasswordView.m in Sources */,
 				2C8D34E317EEF83B00AD110C /* CPPassContainerManager.m in Sources */,

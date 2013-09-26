@@ -55,6 +55,11 @@
     [self setNeedsDisplay];
 }
 
+- (void)setIsShining:(BOOL)isShining {
+    _isShining = isShining;
+    [self setNeedsDisplay];
+}
+
 - (BOOL)containsPoint:(CGPoint)point {
     return isPointInCircle(self.center, self.radius, point);
 }
@@ -92,6 +97,27 @@
         
         icon = [UIImage imageNamed:self.password.icon];
     } else {
+        if (self.isShining) {
+            CGFloat r = 0.8, g = 0.8, b = 0.8;
+            CGFloat locations[PASSWORD_GRADIENT_LEVEL_COUNT + 1];
+            CGFloat components[PASSWORD_GRADIENT_LEVEL_COUNT * 4 + 4];
+            
+            for (int i = 0; i <= PASSWORD_GRADIENT_LEVEL_COUNT; i++) {
+                locations[i] = i / PASSWORD_GRADIENT_LEVEL_COUNT;
+                components[i * 4] = r;
+                components[i * 4 + 1] = g;
+                components[i * 4 + 2] = b;
+                components[i * 4 + 3] = 1.0 - powf(i / PASSWORD_GRADIENT_LEVEL_COUNT, PASSWORD_GRADIENT_EXPONENT);
+            }
+            
+            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+            CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, PASSWORD_GRADIENT_LEVEL_COUNT + 1);
+            CGColorSpaceRelease(colorSpace);
+            CGFloat startRadius = 0.0, endRadius = self.radius * PASSWORD_SHINING_SIZE_MULTIPLIER;
+            
+            CGContextDrawRadialGradient(context, gradient, center, startRadius, center, endRadius, 0);
+        }
+        
         CGFloat ellipseRadius = self.radius * PASSWORD_UNUSED_CIRCLE_SIZE_MULTIPLIER;
         CGFloat patternLength = M_PI * ellipseRadius / PASSWORD_DASH_REPEAT_COUNT;
         CGFloat lengths[] = {patternLength, patternLength};
@@ -99,7 +125,7 @@
         CGContextSetLineDash(context, 0.0, lengths, 2);
         CGContextSetLineWidth(context, PASSWORD_DASH_LINE_WIDTH);
         CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
-        CGContextAddEllipseInRect(context, rectWithCenterAndSize(center, CGSizeMake(2 * ellipseRadius, 2 * ellipseRadius)));
+        CGContextAddEllipseInRect(context, rectContainingCircle(center, ellipseRadius));
         CGContextStrokePath(context);
         
         icon = [UIImage imageNamed:PASSWORD_DEFAULT_ICON];
