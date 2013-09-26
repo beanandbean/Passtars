@@ -62,7 +62,7 @@ static CPPassDataManager *defaultManager = nil;
                 password.isUsed = [NSNumber numberWithBool:index % 2 ? YES : NO];
                 password.text = @"";
                 password.colorIndex = [NSNumber numberWithInt:index];
-                password.icon = CSTR_TO_OBJC(PASSWORD_ICON_NAMES[index]);
+                password.icon = cstrToObjc(PASSWORD_ICON_NAMES[index]);
             }
             [_passwordsController performFetch:nil];
         }

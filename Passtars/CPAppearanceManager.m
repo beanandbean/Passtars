@@ -29,7 +29,7 @@ const NSLayoutAttribute ATTR_END = -1;
 }
 
 + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options preparation:(void (^)(void))preparation animations:(void (^)(void))animations completion:(void (^)(BOOL))completion {    
-    DELAY_BLOCK(delay, ^{
+    delayBlock(delay, ^{
         INCREASE_FORBIDDEN_COUNT;
         if (preparation) {
             preparation();

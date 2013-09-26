@@ -14,7 +14,7 @@ const float _PASSWORD_RADIUS[] = {
     117.000, // iPad landscape
 };
 
-const float DEFAULT_PASSWORD_COLORS[] = {
+const float PASSWORD_COLORS[] = {
     1.000, 0.000, 0.000,
     1.000, 0.647, 0.000,
     1.000, 1.000, 0.000,
@@ -36,5 +36,5 @@ const char *PASSWORD_ICON_NAMES[] = {
     "Sagittarius",
     "Capricorn",
     "Aquarius",
-    "Pisces"
+    "Pisces",
 };

@@ -1,33 +1,42 @@
 //
-//  CPHelperMacros.h
-//  Passtars
-//
-//  Created by wangsw on 9/13/13.
-//  Copyright (c) 2013 codingpotato. All rights reserved.
+// CPHelperMacros.h
 //
 
 #ifndef _HELPER_MACROS_
 #define _HELPER_MACROS_
 
-#define CIRCLE_CONTAIN_POINT(center, radius, point) \
+/* 'n_s' is short for Type Not Specified */
+
+#define isPointInCircle(center, radius, point) \
+    /* BOOL isPointInCircle(CGPoint center, CGFloat radius, CGPoint point) */ \
     ((point.x - center.x) * (point.x - center.x) + (point.y - center.y) * (point.y - center.y) <= radius * radius)
 
-#define CSTR_TO_OBJC(str) /* Using ASCII for string encoding */ \
+#define cstrToObjc(str) /* Using ASCII for string encoding */ \
+    /* NSString cstrToObjc(char *str) */ \
     [NSString stringWithCString:str encoding:NSASCIIStringEncoding]
 
-#define CURRENT_ORIENTATION \
+#define currentOrientation() \
+    /* UIInterfaceOrientation currentOrientation() */ \
     ([UIApplication sharedApplication].statusBarOrientation)
 
-#define DELAY_BLOCK(delay, block) /* Avoid comma in 'block' because it will break the macro */ \
+#define delayBlock(delay, block) /* Avoid comma in 'block' because it will break the macro */ \
+    /* void delayBlock(float delay, void (^block)(void)) */ \
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), block)
 
-#define DEVICE_RELATED_OBJ(phone, pad) \
+#define deviceRelatedObj(phone, pad) \
+    /* n_s deviceRelatedObj(n_s phone, n_s pad) */ \
     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? phone : pad)
 
-#define ORIENTATION_RELATED_OBJ(landscape, portrait) \
-    SPECIFIED_ORIENTATION_RELATED_OBJ(CURRENT_ORIENTATION, landscape, portrait)
+#define orientationRelatedObj(landscape, portrait) \
+    /* n_s orientationRelatedObj(n_s landscape, n_s portrait) */ \
+    specifiedOrientationRelatedObj(CURRENT_ORIENTATION, landscape, portrait)
 
-#define SPECIFIED_ORIENTATION_RELATED_OBJ(orientation, landscape, portrait) \
+#define rectWithCenterAndSize(center, size) \
+    /* CGRect rectWithCenterAndSize(CGPoint center, CGSize size) */ \
+    CGRectMake(center.x - size.width / 2, center.y - size.height / 2, size.width, size.height)
+
+#define specifiedOrientationRelatedObj(orientation, landscape, portrait) \
+    /* n_s specifiedOrientationRelatedObj(UIInterfaceOrientation orientation, n_s landscape, n_s portrait) */ \
     (UIInterfaceOrientationIsLandscape(orientation) ? landscape : portrait)
 
 #endif

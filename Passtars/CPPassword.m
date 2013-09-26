@@ -21,15 +21,15 @@
 @dynamic memos;
 
 - (UIColor *)color {
-    return [[UIColor alloc] initWithRed:DEFAULT_PASSWORD_COLORS[self.colorIndex.intValue * 3] green:DEFAULT_PASSWORD_COLORS[self.colorIndex.intValue * 3 + 1] blue:DEFAULT_PASSWORD_COLORS[self.colorIndex.intValue * 3 + 2] alpha:1.0];
+    return [[UIColor alloc] initWithRed:PASSWORD_COLORS[self.colorIndex.intValue * 3] green:PASSWORD_COLORS[self.colorIndex.intValue * 3 + 1] blue:PASSWORD_COLORS[self.colorIndex.intValue * 3 + 2] alpha:1.0];
 }
 
 - (NSString *)displayIcon {
-    return self.isUsed.boolValue ? self.icon : @"Add";
+    return self.isUsed.boolValue ? self.icon : PASSWORD_DEFAULT_ICON;
 }
 
 - (NSString *)reversedIcon {
-    return self.isUsed.boolValue ? @"Add" : self.icon;
+    return self.isUsed.boolValue ? PASSWORD_DEFAULT_ICON : self.icon;
 }
 
 @end
