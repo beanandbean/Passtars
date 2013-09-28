@@ -30,7 +30,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 @property (strong, nonatomic) NSMutableArray *passwordViews;
 @property (strong, nonatomic) NSMutableArray *passwordConstraints;
 
-@property (strong, nonatomic) CPPasswordRangeView *passwordRangeView;
+@property (strong, nonatomic) CPPasswordRangeView *passwordContainer;
 
 @property (strong, nonatomic) CPPasswordView *dragView;
 @property (strong, nonatomic) NSLayoutConstraint *dragViewCenterXConstraint;
@@ -73,6 +73,8 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     if (self) {
         [CPPassDataManager defaultManager].passwordsController.delegate = self;
         
+        self.superview.backgroundColor = [UIColor blackColor];
+        
         [CPMainViewController startDeviceOrientationWillChangeNotifier];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:CPDeviceOrientationWillChangeNotification object:nil];
         
@@ -93,13 +95,13 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 }
 
 - (void)loadAnimated:(BOOL)animated {
-    [self.superview addSubview:self.passwordRangeView];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.passwordRangeView centerAlignToView:self.superview]];
+    [self.superview addSubview:self.passwordContainer];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.passwordContainer centerAlignToView:self.superview]];
     
     float radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
     for (int i = 0; i < MAX_PASSWORD_COUNT; i++) {
         CPPasswordView *passwordView = [[CPPasswordView alloc] initWithIndex:i andRadius:radius];
-        [self.superview addSubview:passwordView];
+        [self.passwordContainer addSubview:passwordView];
         [self.passwordViews addObject:passwordView];
     }
     [self refreshConstraints];
@@ -107,17 +109,17 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 
 - (void)refreshConstraints {
     if (_passwordConstraints) {
-        [self.superview removeConstraints:_passwordConstraints];
+        [self.passwordContainer removeConstraints:_passwordConstraints];
         _passwordConstraints = nil;
     }
     
     for (int i = 0; i < MAX_PASSWORD_COUNT; i++) {
         CPPasswordView *passwordView = [self.passwordViews objectAtIndex:i];
         CGPoint position = [CPPassContainerManager positionForPasswordAtIndex:i];
-        [self.passwordConstraints addObject:[NSLayoutConstraint constraintWithItem:passwordView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.superview attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:position.x]];
-        [self.passwordConstraints addObject:[NSLayoutConstraint constraintWithItem:passwordView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.superview attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:position.y]];
+        [self.passwordConstraints addObject:[NSLayoutConstraint constraintWithItem:passwordView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.passwordContainer attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:position.x]];
+        [self.passwordConstraints addObject:[NSLayoutConstraint constraintWithItem:passwordView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.passwordContainer attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:position.y]];
     }
-    [self.superview addConstraints:self.passwordConstraints];
+    [self.passwordContainer addConstraints:self.passwordConstraints];
 }
 
 - (void)refreshRadiusWithOrientation:(UIInterfaceOrientation)orientation {
@@ -134,6 +136,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     [self refreshRadiusWithOrientation:orientation];
 }
 
+// 'location' is relative to self.passwordContainer
 - (CPPasswordView *)passwordViewAtLocation:(CGPoint)location {
     CPPasswordView *foundPasswordView = nil;
     for (CPPasswordView *passwordView in self.passwordViews) {
@@ -146,42 +149,49 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 }
 
 - (void)startDragPasswordView {
-    self.passwordRangeView.hidden = NO;
+    self.passwordContainer.rangeVisibility = YES;
     
     self.dragView = [[CPPasswordView alloc] initWithIndex:self.dragSourceView.index andRadius:PASSWORD_RADIUS * PASSWORD_DRAG_SIZE_MULTIPLIER];
-    [self.superview addSubview:self.dragView];
+    [self.passwordContainer addSubview:self.dragView];
     
     self.dragViewCenterXConstraint = [CPAppearanceManager constraintWithView:self.dragView alignToView:self.dragSourceView attribute:NSLayoutAttributeCenterX];
-    [self.superview addConstraint:self.dragViewCenterXConstraint];
+    [self.passwordContainer addConstraint:self.dragViewCenterXConstraint];
     self.dragViewCenterYConstraint = [CPAppearanceManager constraintWithView:self.dragView alignToView:self.dragSourceView attribute:NSLayoutAttributeCenterY];
-    [self.superview addConstraint:self.dragViewCenterYConstraint];
+    [self.passwordContainer addConstraint:self.dragViewCenterYConstraint];
     
     self.dragSourceView.hidden = YES;
 }
 
+// 'location' is relative to self.passwordContainer
 - (void)dragPasswordViewByTranslation:(CGPoint)translation toLocation:(CGPoint)location {
     self.dragViewCenterXConstraint.constant += translation.x;
     self.dragViewCenterYConstraint.constant += translation.y;
-    [self.superview layoutIfNeeded];
+    [self.passwordContainer layoutIfNeeded];
     
-    CPPasswordView *newDestinationView = [self passwordViewAtLocation:location];
-    if (newDestinationView != self.dragSourceView && newDestinationView != self.dragDestinationView) {
-        if (self.dragDestinationView) {
-            if (self.dragDestinationView.password.isUsed.boolValue) {
-                self.dragDestinationView.radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
-            } else {
-                self.dragDestinationView.isShining = NO;
-            }
-        }
-        if (newDestinationView) {
-            if (newDestinationView.password.isUsed.boolValue) {
-                newDestinationView.radius = PASSWORD_RADIUS * PASSWORD_DRAG_SIZE_MULTIPLIER;
-            } else {
-                newDestinationView.isShining = YES;
-            }
-        }
+    if (isPointInCircle(CGPointMake(self.passwordContainer.frame.size.width / 2, self.passwordContainer.frame.size.height / 2), self.passwordContainer.frame.size.width / 2, location)) {
+        self.superview.backgroundColor = [UIColor blackColor];
         
-        self.dragDestinationView = newDestinationView;
+        CPPasswordView *newDestinationView = [self passwordViewAtLocation:location];
+        if (newDestinationView != self.dragSourceView && newDestinationView != self.dragDestinationView) {
+            if (self.dragDestinationView) {
+                if (self.dragDestinationView.password.isUsed.boolValue) {
+                    self.dragDestinationView.radius = PASSWORD_RADIUS * PASSWORD_SIZE_MULTIPLIER;
+                } else {
+                    self.dragDestinationView.isShining = NO;
+                }
+            }
+            if (newDestinationView) {
+                if (newDestinationView.password.isUsed.boolValue) {
+                    newDestinationView.radius = PASSWORD_RADIUS * PASSWORD_DRAG_SIZE_MULTIPLIER;
+                } else {
+                    newDestinationView.isShining = YES;
+                }
+            }
+            
+            self.dragDestinationView = newDestinationView;
+        }
+    } else {
+        self.superview.backgroundColor = [UIColor redColor];
     }
 }
 
@@ -192,24 +202,24 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
             self.dragDestinationView.hidden = YES;
             
             CPPasswordView *destinationMoveView = [[CPPasswordView alloc] initWithIndex:self.dragDestinationView.index andRadius:PASSWORD_RADIUS * PASSWORD_DRAG_SIZE_MULTIPLIER];
-            [self.superview addSubview:destinationMoveView];
+            [self.passwordContainer addSubview:destinationMoveView];
             
             NSArray *destinationMoveViewCenterConstraints = [CPAppearanceManager constraintsWithView:destinationMoveView centerAlignToView:self.dragDestinationView];
-            [self.superview addConstraints:destinationMoveViewCenterConstraints];
+            [self.passwordContainer addConstraints:destinationMoveViewCenterConstraints];
             
-            [self.superview bringSubviewToFront:self.dragView];
-            [self.superview sendSubviewToBack:destinationMoveView];
-            [self.superview layoutIfNeeded];
+            [self.passwordContainer bringSubviewToFront:self.dragView];
+            [self.passwordContainer sendSubviewToBack:destinationMoveView];
+            [self.passwordContainer layoutIfNeeded];
             
-            [self.superview removeConstraint:self.dragViewCenterXConstraint];
-            [self.superview removeConstraint:self.dragViewCenterYConstraint];
-            [self.superview removeConstraints:destinationMoveViewCenterConstraints];
+            [self.passwordContainer removeConstraint:self.dragViewCenterXConstraint];
+            [self.passwordContainer removeConstraint:self.dragViewCenterYConstraint];
+            [self.passwordContainer removeConstraints:destinationMoveViewCenterConstraints];
             
-            [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragDestinationView]];
-            [self.superview addConstraints:[CPAppearanceManager constraintsWithView:destinationMoveView centerAlignToView:self.dragSourceView]];
+            [self.passwordContainer addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragDestinationView]];
+            [self.passwordContainer addConstraints:[CPAppearanceManager constraintsWithView:destinationMoveView centerAlignToView:self.dragSourceView]];
             
             [CPAppearanceManager animateWithDuration:0.5 animations:^{
-                [self.superview layoutIfNeeded];
+                [self.passwordContainer layoutIfNeeded];
             } completion:^(BOOL finished) {
                 [[CPPassDataManager defaultManager] exchangePasswordBetweenIndex1:self.dragSourceView.index andIndex2:self.dragDestinationView.index];
                 
@@ -221,35 +231,37 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
                 [self removeDragViews];
             }];
         } else {
-            [self.superview removeConstraint:self.dragViewCenterXConstraint];
-            [self.superview removeConstraint:self.dragViewCenterYConstraint];
+            [self.passwordContainer removeConstraint:self.dragViewCenterXConstraint];
+            [self.passwordContainer removeConstraint:self.dragViewCenterYConstraint];
             
-            [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragDestinationView]];
+            [self.passwordContainer addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragDestinationView]];
             
             self.dragSourceView.used = NO;
             self.dragSourceView.hidden = NO;
             self.dragSourceView.alpha = 0.0;
             
             [CPAppearanceManager animateWithDuration:0.5 animations:^{
-                [self.superview layoutIfNeeded];
                 self.dragSourceView.alpha = 1.0;
                 self.dragDestinationView.alpha = 0.0;
+                
+                [self.passwordContainer layoutIfNeeded];
             } completion:^(BOOL finished) {
                 [[CPPassDataManager defaultManager] exchangePasswordBetweenIndex1:self.dragSourceView.index andIndex2:self.dragDestinationView.index];
                 
                 self.dragDestinationView.alpha = 1.0;
+                self.dragDestinationView.isShining = NO;
                 
                 [self removeDragViews];
             }];
         }
     } else {
-        [self.superview removeConstraint:self.dragViewCenterXConstraint];
-        [self.superview removeConstraint:self.dragViewCenterYConstraint];
+        [self.passwordContainer removeConstraint:self.dragViewCenterXConstraint];
+        [self.passwordContainer removeConstraint:self.dragViewCenterYConstraint];
         
-        [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragSourceView]];
+        [self.passwordContainer addConstraints:[CPAppearanceManager constraintsWithView:self.dragView centerAlignToView:self.dragSourceView]];
         
         [CPAppearanceManager animateWithDuration:0.5 animations:^{
-            [self.superview layoutIfNeeded];
+            [self.passwordContainer layoutIfNeeded];
         } completion:^(BOOL finished) {
             self.dragSourceView.hidden = NO;
             
@@ -261,7 +273,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 - (void)removeDragViews {
     [self.dragView removeFromSuperview];
     
-    self.passwordRangeView.hidden = YES;
+    self.passwordContainer.rangeVisibility = NO;
     
     self.dragView = nil;
     self.dragViewCenterXConstraint = nil;
@@ -272,7 +284,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        self.dragSourceView = [self passwordViewAtLocation:[gesture locationInView:gesture.view]];
+        self.dragSourceView = [self passwordViewAtLocation:[self.passwordContainer convertPoint:[gesture locationInView:gesture.view] fromView:gesture.view]];
         if (self.dragSourceView && self.dragSourceView.password.isUsed.boolValue) {
             [CPProcessManager startProcess:DRAGGING_PASS_VIEW_PROCESS withPreparation:^{
                 [self startDragPasswordView];
@@ -290,7 +302,7 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateChanged) {
         if (IS_IN_PROCESS(DRAGGING_PASS_VIEW_PROCESS)) {
-            [self dragPasswordViewByTranslation:[gesture translationInView:gesture.view] toLocation:[gesture locationInView:gesture.view]];
+            [self dragPasswordViewByTranslation:[gesture translationInView:gesture.view] toLocation:[self.passwordContainer convertPoint:[gesture locationInView:gesture.view] fromView:gesture.view]];
             [gesture setTranslation:CGPointZero inView:gesture.view];
         }
     } else if (gesture.state == UIGestureRecognizerStateEnded || gesture.state == UIGestureRecognizerStateCancelled || gesture.state == UIGestureRecognizerStateFailed) {
@@ -345,12 +357,11 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     return _passwordConstraints;
 }
 
-- (CPPasswordRangeView *)passwordRangeView {
-    if (!_passwordRangeView) {
-        _passwordRangeView = [[CPPasswordRangeView alloc] init];
-        _passwordRangeView.hidden = YES;
+- (CPPasswordRangeView *)passwordContainer {
+    if (!_passwordContainer) {
+        _passwordContainer = [[CPPasswordRangeView alloc] init];
     }
-    return _passwordRangeView;
+    return _passwordContainer;
 }
 
 @end

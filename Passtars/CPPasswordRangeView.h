@@ -8,4 +8,6 @@
 
 @interface CPPasswordRangeView : UIView
 
+@property (nonatomic) BOOL rangeVisibility;
+
 @end
