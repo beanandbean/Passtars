@@ -19,6 +19,7 @@
 #import "CPPassword.h"
 
 #import "CPMainViewController.h"
+#import "CPPassEditManager.h"
 
 #import "CPProcessManager.h"
 #import "CPDraggingPassViewProcess.h"
@@ -31,6 +32,9 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
 @property (strong, nonatomic) NSMutableArray *passwordConstraints;
 
 @property (strong, nonatomic) CPPasswordRangeView *passwordRangeView;
+
+@property (strong, nonatomic) UIView *passEditView;
+@property (strong, nonatomic) CPPassEditManager *passEditManager;
 
 @property (strong, nonatomic) CPPasswordView *dragView;
 @property (strong, nonatomic) NSLayoutConstraint *dragViewCenterXConstraint;
@@ -75,6 +79,8 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
         
         [CPMainViewController startDeviceOrientationWillChangeNotifier];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:CPDeviceOrientationWillChangeNotification object:nil];
+        
+        [self.superview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)]];
         
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
         longPress.delegate = self;
@@ -270,6 +276,16 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
     self.dragDestinationView = nil;
 }
 
+- (void)handleTapGesture:(UILongPressGestureRecognizer *)gesture {
+    CPPasswordView * passwordView = [self passwordViewAtLocation:[gesture locationInView:gesture.view]];
+    if (passwordView) {
+        [self.superview addSubview:self.passEditView];
+        [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.passEditView edgesAlignToView:self.superview]];
+        self.passEditManager = [[CPPassEditManager alloc] initWithSupermanager:self superview:self.passEditView andPassword:passwordView.password];
+        [self.passEditManager loadAnimated:YES];
+    }
+}
+
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         self.dragSourceView = [self passwordViewAtLocation:[gesture locationInView:gesture.view]];
@@ -351,6 +367,15 @@ static float g_positioningArray[MAX_PASSWORD_COUNT * 2] = {-1.0};
         _passwordRangeView.hidden = YES;
     }
     return _passwordRangeView;
+}
+
+- (UIView *)passEditView {
+    if (!_passEditView) {
+        _passEditView = [[UIView alloc] init];
+        _passEditView.backgroundColor = [UIColor grayColor];
+        _passEditView.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _passEditView;
 }
 
 @end

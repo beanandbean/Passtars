@@ -20,6 +20,7 @@
 		FC15221117F0306700373A58 /* CPAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC15220E17F0306700373A58 /* CPAdManager.m */; };
 		FC15221217F0306700373A58 /* CPHelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC15221017F0306700373A58 /* CPHelpManager.m */; };
 		FC7BAFB917F334C000C32176 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7BAFB717F334C000C32176 /* libGoogleAdMobAds.a */; };
+		FCA5755517F5C93300B4FCB3 /* CPPassEditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA5755417F5C93300B4FCB3 /* CPPassEditManager.m */; };
 		FCC1594917EEBDE800685498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594817EEBDE800685498 /* Foundation.framework */; };
 		FCC1594B17EEBDE800685498 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594A17EEBDE800685498 /* CoreGraphics.framework */; };
 		FCC1594D17EEBDE800685498 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC1594C17EEBDE800685498 /* UIKit.framework */; };
@@ -96,6 +97,8 @@
 		FC7BAFB517F334C000C32176 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
 		FC7BAFB617F334C000C32176 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		FC7BAFB717F334C000C32176 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		FCA5755317F5C93300B4FCB3 /* CPPassEditManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPassEditManager.h; sourceTree = "<group>"; };
+		FCA5755417F5C93300B4FCB3 /* CPPassEditManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPassEditManager.m; sourceTree = "<group>"; };
 		FCC1594517EEBDE800685498 /* Passtars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Passtars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC1594817EEBDE800685498 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FCC1594A17EEBDE800685498 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,14 +219,16 @@
 			children = (
 				FC15220D17F0306700373A58 /* CPAdManager.h */,
 				FC15220E17F0306700373A58 /* CPAdManager.m */,
-				FC15220F17F0306700373A58 /* CPHelpManager.h */,
-				FC15221017F0306700373A58 /* CPHelpManager.m */,
 				2C8D34DD17EEF74000AD110C /* CPAppContentManager.h */,
 				2C8D34DE17EEF74000AD110C /* CPAppContentManager.m */,
+				FC15220F17F0306700373A58 /* CPHelpManager.h */,
+				FC15221017F0306700373A58 /* CPHelpManager.m */,
 				2C8D34DA17EEF66000AD110C /* CPMainViewManager.h */,
 				2C8D34DB17EEF66000AD110C /* CPMainViewManager.m */,
 				2C8D34E117EEF83B00AD110C /* CPPassContainerManager.h */,
 				2C8D34E217EEF83B00AD110C /* CPPassContainerManager.m */,
+				FCA5755317F5C93300B4FCB3 /* CPPassEditManager.h */,
+				FCA5755417F5C93300B4FCB3 /* CPPassEditManager.m */,
 				2C8D34D717EEF4D200AD110C /* CPRootManager.h */,
 				2C8D34D817EEF4D200AD110C /* CPRootManager.m */,
 			);
@@ -476,6 +481,7 @@
 				FCC1598517EEC01B00685498 /* CPMainViewController.m in Sources */,
 				2CC1109717F19BAA00C62D06 /* CPDraggingPassViewProcess.m in Sources */,
 				FCC159B317EEE44500685498 /* CPPassDataManager.m in Sources */,
+				FCA5755517F5C93300B4FCB3 /* CPPassEditManager.m in Sources */,
 				FCC159B217EEE44500685498 /* CPMemo.m in Sources */,
 				FCC159AC17EEE42400685498 /* Passtars.xcdatamodeld in Sources */,
 				2CC390DB17F4434400B3B08E /* CPPasswordRangeView.m in Sources */,
