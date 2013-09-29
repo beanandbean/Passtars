@@ -13,7 +13,7 @@
 
 #pragma mark - SECTION: Password
 
-#define MAX_PASSWORD_COUNT 7
+#define PASSWORD_MAX_COUNT 7
 
 #define PASSWORD_DEVICE_SEPCIFIED_ORIENTATION_RELATED_INDEX(orientation) \
     (deviceRelatedObj(0, 1) + specifiedOrientationRelatedObj(orientation, 1, 0))

@@ -32,7 +32,11 @@
         self.userInteractionEnabled = NO;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor clearColor];
+        
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOffset = CGSizeZero;
+        self.layer.shadowRadius = 10.0;
         
         [self addConstraint:self.widthConstraint];
         [self addConstraint:self.heightConstraint];
@@ -63,6 +67,8 @@
     self.widthConstraint.constant = self.radius * 2;
     self.heightConstraint.constant = self.radius * 2;
     
+    self.layer.shadowPath = [UIBezierPath bezierPathWithOvalInRect:rectContainingCircle(CGPointMake(self.radius, self.radius), self.radius + 20.0)].CGPath;
+    
     [self setNeedsDisplay];
 }
 
@@ -75,11 +81,17 @@
         CGFloat patternLength = M_PI * ellipseRadius / PASSWORD_RANGE_DASH_REPEAT_COUNT;
         CGFloat lengths[] = {patternLength, patternLength};
         
+        CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+        CGContextFillEllipseInRect(context, rectContainingCircle(center, self.radius));
+        
         CGContextSetLineDash(context, 0.0, lengths, 2);
         CGContextSetLineWidth(context, PASSWORD_RANGE_DASH_LINE_WIDTH);
         CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
-        CGContextAddEllipseInRect(context, rectContainingCircle(center, ellipseRadius));
-        CGContextStrokePath(context);
+        CGContextStrokeEllipseInRect(context, rectContainingCircle(center, ellipseRadius));
+        
+        self.layer.shadowOpacity = 1.0;
+    } else {
+        self.layer.shadowOpacity = 0.0;
     }
 }
 

@@ -125,8 +125,7 @@
         CGContextSetLineDash(context, 0.0, lengths, 2);
         CGContextSetLineWidth(context, PASSWORD_DASH_LINE_WIDTH);
         CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
-        CGContextAddEllipseInRect(context, rectContainingCircle(center, ellipseRadius));
-        CGContextStrokePath(context);
+        CGContextStrokeEllipseInRect(context, rectContainingCircle(center, ellipseRadius));
         
         icon = [UIImage imageNamed:PASSWORD_DEFAULT_ICON];
     }

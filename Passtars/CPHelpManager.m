@@ -53,13 +53,13 @@
     title.textColor = [UIColor whiteColor];
     title.translatesAutoresizingMaskIntoConstraints = NO;
     [self.superview addSubview:title];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:title alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeTop, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:title alignToView:self.superview attributes:NSLayoutAttributeLeft, NSLayoutAttributeTop, NSLayoutAttributeRight, ATTR_END]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:title height:HELP_TITLE_HEIGHT]];
 
     UIView *buttonView = [[UIView alloc] init];
     buttonView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.superview addSubview:buttonView];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:buttonView alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:buttonView alignToView:self.superview attributes:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:buttonView height:HELP_BUTTON_VIEW_HEIGHT]];
     
     UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -75,7 +75,7 @@
     
     [self.superview addSubview:self.backImageView];
     [self.superview addSubview:self.frontImageView];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.backImageView alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.backImageView alignToView:self.superview attributes:NSLayoutAttributeLeft, NSLayoutAttributeRight, ATTR_END]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:self.backImageView attribute:NSLayoutAttributeTop alignToView:title attribute:NSLayoutAttributeBottom]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:self.backImageView attribute:NSLayoutAttributeBottom alignToView:buttonView attribute:NSLayoutAttributeTop]];
     [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.frontImageView edgesAlignToView:self.backImageView]];
@@ -92,7 +92,7 @@
     
     [self.superview addSubview:self.pageControl];
     [self.pageControl addConstraint:[CPAppearanceManager constraintWithView:self.pageControl height:HELP_PAGE_CONTROL_HEIGHT]];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.pageControl alignToView:self.scrollView attribute:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.pageControl alignToView:self.scrollView attributes:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
 
     [self createTextLabels];
 }

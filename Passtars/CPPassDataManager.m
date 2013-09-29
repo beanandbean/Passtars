@@ -37,7 +37,7 @@ static CPPassDataManager *defaultManager = nil;
         defaultManager = [[CPPassDataManager alloc] init];
         
 #ifdef AUTO_ADD_NEW_MEMOS
-        for (NSUInteger index = 0; index < MAX_PASSWORD_COUNT; index++) {
+        for (NSUInteger index = 0; index < PASSWORD_MAX_COUNT; index++) {
             [defaultManager newMemoText:@"Hello" inIndex:index];
         }
 #endif
@@ -55,10 +55,10 @@ static CPPassDataManager *defaultManager = nil;
         [_passwordsController performFetch:nil];
         
         if (!_passwordsController.fetchedObjects.count) {
-            for (NSUInteger index = 0; index < MAX_PASSWORD_COUNT; index++) {
+            for (NSUInteger index = 0; index < PASSWORD_MAX_COUNT; index++) {
                 CPPassword *password = [NSEntityDescription insertNewObjectForEntityForName:@"Password" inManagedObjectContext:self.managedObjectContext];
                 password.index = [NSNumber numberWithUnsignedInteger:index];
-                /* debug code, remove later */
+                /* debug code, remove later (should be 'password.isUsed = NO;') */
                 password.isUsed = [NSNumber numberWithBool:index % 2 ? YES : NO];
                 password.text = @"";
                 password.colorIndex = [NSNumber numberWithInt:index];
@@ -75,8 +75,8 @@ static CPPassDataManager *defaultManager = nil;
     NSAssert1(password, @"No password corresponding to password index %d!", (int)index);
     
     if ([text isEqualToString:@""]) {
-        if (password.isUsed.boolValue) {
-            [self toggleRemoveStateOfPasswordAtIndex:password.index.integerValue];
+        if ([self canRemovePasswordAtIndex:index]) {
+            [self removePasswordAtIndex:index];
         }
     } else {
         if (!password.isUsed.boolValue) {
@@ -111,21 +111,38 @@ static CPPassDataManager *defaultManager = nil;
     [self saveContext];
 }
 
-- (BOOL)canToggleRemoveStateOfPasswordAtIndex:(NSUInteger)index {
+- (BOOL)canRemovePasswordAtIndex:(NSUInteger)index {
     CPPassword *password = [self.passwordsController.fetchedObjects objectAtIndex:index];
     NSAssert1(password, @"No password corresponding to password index %d!", (int)index);
     
-    return ![password.text isEqualToString:@""];
+    return password.isUsed.boolValue;
 }
 
-- (void)toggleRemoveStateOfPasswordAtIndex:(NSUInteger)index {
+- (void)removePasswordAtIndex:(NSUInteger)index {
+    NSAssert1([self canRemovePasswordAtIndex:index], @"Can't remove password index %d!", (int)index);
+    
     CPPassword *password = [self.passwordsController.fetchedObjects objectAtIndex:index];
     NSAssert1(password, @"No password corresponding to password index %d!", (int)index);
     
-    if (![password.text isEqualToString:@""]) {
-        password.isUsed = [NSNumber numberWithBool:!password.isUsed.boolValue];
-        [self saveContext];
-    }
+    password.isUsed = [NSNumber numberWithBool:NO];
+    [self saveContext];
+}
+
+- (BOOL)canRecoverPasswordAtIndex:(NSUInteger)index {
+    CPPassword *password = [self.passwordsController.fetchedObjects objectAtIndex:index];
+    NSAssert1(password, @"No password corresponding to password index %d!", (int)index);
+    
+    return !password.isUsed.boolValue && password.text && ![password.text isEqualToString:@""];
+}
+
+- (void)recoverPasswordAtIndex:(NSUInteger)index {
+    NSAssert1([self canRecoverPasswordAtIndex:index], @"Can't recover password index %d!", (int)index);
+    
+    CPPassword *password = [self.passwordsController.fetchedObjects objectAtIndex:index];
+    NSAssert1(password, @"No password corresponding to password index %d!", (int)index);
+    
+    password.isUsed = [NSNumber numberWithBool:YES];
+    [self saveContext];
 }
 
 - (void)exchangePasswordBetweenIndex1:(NSUInteger)index1 andIndex2:(NSUInteger)index2 {

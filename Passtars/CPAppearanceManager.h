@@ -13,13 +13,12 @@ extern const NSLayoutAttribute ATTR_END;
 + (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations;
 + (void)animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(BOOL))completion;
 + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL))completion;
-+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options preparation:(void (^)(void))preparation animations:(void (^)(void))animations completion:(void (^)(BOOL))completion;
 
 #pragma mark - Constraints Helper
 
 + (NSArray *)constraintsWithView:(UIView *)view1 edgesAlignToView:(UIView *)view2;
 + (NSArray *)constraintsWithView:(UIView *)view1 centerAlignToView:(UIView *)view2;
-+ (NSArray *)constraintsWithView:(UIView *)view1 alignToView:(UIView *)view2 attribute:(NSLayoutAttribute)attr, ...;
++ (NSArray *)constraintsWithView:(UIView *)view1 alignToView:(UIView *)view2 attributes:(NSLayoutAttribute)attr, ...;
 
 + (NSLayoutConstraint *)constraintWithView:(UIView *)view1 alignToView:(UIView *)view2 attribute:(NSLayoutAttribute)attr;
 + (NSLayoutConstraint *)constraintWithView:(UIView *)view1 attribute:(NSLayoutAttribute)attr1 alignToView:(UIView *)view2 attribute:(NSLayoutAttribute)attr2;

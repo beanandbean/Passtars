@@ -27,10 +27,10 @@
 
 - (void)loadAnimated:(BOOL)animated {
     [self.superview addSubview:self.appContentView];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.appContentView alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeTop, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.appContentView alignToView:self.superview attributes:NSLayoutAttributeLeft, NSLayoutAttributeTop, NSLayoutAttributeRight, ATTR_END]];
     
     [self.superview addSubview:self.adView];
-    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.adView alignToView:self.superview attribute:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
+    [self.superview addConstraints:[CPAppearanceManager constraintsWithView:self.adView alignToView:self.superview attributes:NSLayoutAttributeLeft, NSLayoutAttributeBottom, NSLayoutAttributeRight, ATTR_END]];
     [self.superview addConstraint:[CPAppearanceManager constraintWithView:self.appContentView attribute:NSLayoutAttributeBottom alignToView:self.adView attribute:NSLayoutAttributeTop]];
     
     [self.appContentManager loadAnimated:NO];
@@ -42,6 +42,7 @@
 - (UIView *)appContentView {
     if (!_appContentView) {
         _appContentView = [[UIView alloc] init];
+        _appContentView.clipsToBounds = YES;
         _appContentView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _appContentView;
